@@ -48,7 +48,6 @@ class MagicMaze {
     return sourceArray;
   }
   makePawnSquares() {
-    // debugger;
     var sourceColors = this.getSquareSourceArray();
     for (var row = 0; row < this.pawnOptions.height; row++) {
       this.squareArray[row] = [];
