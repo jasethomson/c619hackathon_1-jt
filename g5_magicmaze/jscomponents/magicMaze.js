@@ -1,14 +1,18 @@
 
 
 class MagicMaze {
-  constructor( options ) {
+  constructor( options, pawnOptions ) {
     this.options = options;
-    this.boardArray = [];
-    this.gameBoardDom = $("#gameBoard");
+    this.pawnOptions = pawnOptions;
 
-    this.getPawnSourceArray();
+    this.boardArray = [];
+    this.squareArray = [];
+    this.gameBoardDom = $("#gameBoard");
+    this.tileDomObject = null;
+    this.getTileSourceArray();
+    this.getSquareSourceArray();
   }
-  getPawnSourceArray() {
+  getTileSourceArray() {
     var sourceArray = [];
     for (var color in this.options.pawnCounts) {
       for (var count = 0; count < this.options.pawnCounts[color]; count++) {
@@ -18,7 +22,8 @@ class MagicMaze {
     return sourceArray;
   }
   makeGameBoard() {
-    var sourceColors = this.getPawnSourceArray();
+    // debugger;
+    var sourceColors = this.getTileSourceArray();
     for (var row = 0; row < this.options.height; row++) {
       this.boardArray[row] = [];
       for (var col = 0; col < this.options.width; col++) {
@@ -27,8 +32,33 @@ class MagicMaze {
         }
         var tile = new Tile(location);
         this.boardArray[row][col] = tile;
-        var tileDomObject = tile.render();
-        this.gameBoardDom.append(tileDomObject);
+        this.tileDomObject = tile.render();
+        this.gameBoardDom.append(this.tileDomObject);
+        this.makePawnSquares();
+      }
+    }
+  }
+  getSquareSourceArray() {
+    var sourceArray = [];
+    for (var color in this.options.pawnCounts) {
+      for (var count = 0; count < this.options.pawnCounts[color]; count++) {
+        sourceArray.push(color);
+      }
+    }
+    return sourceArray;
+  }
+  makePawnSquares() {
+    var sourceColors = this.getSquareSourceArray();
+    for (var row = 0; row < this.pawnOptions.height; row++) {
+      this.squareArray[row] = [];
+      for (var col = 0; col < this.pawnOptions.width; col++) {
+        var location = {
+          x: col, y: row
+        }
+        var square = new Square(location);
+        this.squareArray[row][col] = square;
+        var squareDomObject = square.render();
+        this.tileDomObject.append(squareDomObject);
       }
     }
   }
