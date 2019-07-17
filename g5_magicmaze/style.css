@@ -23,17 +23,17 @@ header{
   background-color: lightblue;
 
 }
-.squareCell{
+.square{
   width: 33.33%;
   height: 33.33%;
   background-color: red;
   position: relative;
   float: left;
 }
-.squareCell:nth-child(2){
-  /* display: none; */
-}
-.squareCellContents{
+/* .square:nth-child(2){
+   display: none;
+} */
+.squareContainer{
   /* display: none; */
   border: 2px solid whitesmoke;
   background-color: black;
@@ -41,17 +41,24 @@ header{
   width: 100%;
   height: 100%;
   position: absolute;
+  /*new stuff*/
+  background-image: url(images/tileBack.png);
+  background-position: center;
+  background-size: cover;
 }
-.pawnCell {
+.pawn{
   width: 25%;
   height: 25%;
   background-color: green;
   float: left;
 }
-.pawnCellContents{
+.pawnContainer{
   border: 1px solid orange;
   background-color: grey;
   width: 100%;
   height: 100%;
   position: static;
+}
+.toggleDisplay{
+  display: none;
 }

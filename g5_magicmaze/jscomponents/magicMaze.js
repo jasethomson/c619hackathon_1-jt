@@ -4,59 +4,40 @@ class MagicMaze {
   constructor( options, pawnOptions ) {
     this.options = options;
     this.pawnOptions = pawnOptions;
-
     this.boardArray = [];
     this.squareArray = [];
+    this.realArray = [];
+    // this.realArray
     this.gameBoardDom = $("#gameBoard");
     this.tileDomObject = null;
-    this.getTileSourceArray();
-    this.getSquareSourceArray();
-  }
-  getTileSourceArray() {
-    var sourceArray = [];
-    for (var color in this.options.pawnCounts) {
-      for (var count = 0; count < this.options.pawnCounts[color]; count++) {
-        sourceArray.push(color);
-      }
-    }
-    return sourceArray;
+    this.row = null;
+    this.col = null;
   }
   makeGameBoard() {
     // debugger;
-    var sourceColors = this.getTileSourceArray();
-    for (var row = 0; row < this.options.height; row++) {
-      this.boardArray[row] = [];
-      for (var col = 0; col < this.options.width; col++) {
+    for (this.row = 0; this.row < this.options.height; this.row++) {
+      this.boardArray[this.row] = [];
+      for (this.col = 0; this.col < this.options.width; this.col++) {
         var location = {
-          x: col, y: row
+          x: this.col, y: this.row
         }
         var tile = new Tile(location);
-        this.boardArray[row][col] = tile;
+        this.boardArray[this.row][this.col] = tile;
         this.tileDomObject = tile.render();
         this.gameBoardDom.append(this.tileDomObject);
         this.makePawnSquares();
       }
     }
   }
-  getSquareSourceArray() {
-    var sourceArray = [];
-    for (var color in this.options.pawnCounts) {
-      for (var count = 0; count < this.options.pawnCounts[color]; count++) {
-        sourceArray.push(color);
-      }
-    }
-    return sourceArray;
-  }
   makePawnSquares() {
-    var sourceColors = this.getSquareSourceArray();
-    for (var row = 0; row < this.pawnOptions.height; row++) {
-      this.squareArray[row] = [];
-      for (var col = 0; col < this.pawnOptions.width; col++) {
+    for (var row2 = 0; row2 < this.pawnOptions.height; row2++) {
+      this.boardArray[this.row][this.col][row2] = [];
+      for (var col2 = 0; col2 < this.pawnOptions.width; col2++) {
         var location = {
-          x: col, y: row
+          x: col2, y: row2
         }
         var square = new Square(location);
-        this.squareArray[row][col] = square;
+        this.boardArray[this.row][this.col][row2][col2] = square;
         var squareDomObject = square.render();
         this.tileDomObject.append(squareDomObject);
       }

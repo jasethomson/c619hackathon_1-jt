@@ -3,6 +3,7 @@ $(document).ready(initializeApp);
 var game = null;
 
 function initializeApp() {
+  $('.squareCellContents').on('click',clickToUnhideCard);
   var magicMazeConfig = {
     height: 3,
     width: 3,
@@ -13,4 +14,9 @@ function initializeApp() {
   }
   game = new MagicMaze(magicMazeConfig, pawnConfig);
   game.makeGameBoard();
+}
+function clickToUnhideCard(event) {
+  var clickCurrentTile = $(event.currentTarget);
+  console.log(clickCurrentTile);
+
 }
