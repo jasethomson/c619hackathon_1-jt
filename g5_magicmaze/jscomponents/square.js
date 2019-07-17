@@ -9,8 +9,8 @@ class Square {
     };
   }
   render() {
-    this.domElement.container = $("<div>").addClass('pawnCell');
-    this.domElement.contents = $("<div>").addClass('pawnCellContents');
+    this.domElement.container = $("<div>").addClass('pawn');
+    this.domElement.contents = $("<div>").addClass('pawnContainer');
     this.domElement.container.append(this.domElement.contents);
     return this.domElement.container;
   }
