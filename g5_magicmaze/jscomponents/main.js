@@ -14,6 +14,8 @@ function initializeApp() {
   }
   game = new MagicMaze(magicMazeConfig, pawnConfig);
   game.makeGameBoard();
+
+  var newPlayer = new Player();
 }
 function clickToUnhideCard(event) {
   var clickCurrentTile = $(event.currentTarget);
