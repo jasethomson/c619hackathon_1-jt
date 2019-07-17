@@ -13,4 +13,6 @@ function initializeApp() {
   }
   game = new MagicMaze(magicMazeConfig, pawnConfig);
   game.makeGameBoard();
+
+  var newPlayer = new Player();
 }
