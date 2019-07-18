@@ -29,6 +29,7 @@ class MagicMaze {
         this.makePawnSquares();
       }
     }
+    $(".square:nth-child(5) .squareContainer").removeClass("backOfTile");
   }
   makePawnSquares() {
     // debugger;
