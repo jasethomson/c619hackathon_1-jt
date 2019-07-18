@@ -1,12 +1,16 @@
 
 class Player {
-  constructor( color, position ) {
-    this.player = $("<div>").addClass("player player1");
+  constructor( color, positionX , positionY , player) {
+    this.player = $("<div>").addClass("player", player);
+    // if (player == "player1"){
+    //   this.currentPlayer = player;
+    // }
+
     this.player.css("background-color", color);
     this.largeSquareX = 1;
     this.largeSquareY = 1;
-    this.upandDownIndex = 1;
-    this.leftandRightIndex = 1;
+    this.upandDownIndex = positionY;
+    this.leftandRightIndex = positionX;
     this.winCondition = false;
     this.rightIndex = 1;
     this.stolenItem = false;
@@ -21,11 +25,13 @@ class Player {
     }
 
     // starting position //
-    $(game.boardArray[this.largeSquareY][this.largeSquareX][position][position].domElement.contents).append(this.player);
+    $(game.boardArray[this.largeSquareY][this.largeSquareX][positionY][positionX].domElement.contents).append(this.player);
     this.currentContents = game.boardArray[this.largeSquareY][this.largeSquareX][this.upandDownIndex][this.leftandRightIndex]
     this.currentPosition = game.boardArray[this.largeSquareY][this.largeSquareX][this.upandDownIndex][this.leftandRightIndex].location;
     // this.checkDoor();
-    window.addEventListener('keydown', function (event) {
+    // console.log(this.currentPlayer)
+    window.addEventListener('keydown', function playerMove(event) {
+      // if (this.currentPlayer == "player1"){
       switch (event.keyCode) {
         case 37:
           this.movementLeft();
@@ -40,6 +46,22 @@ class Player {
           this.movementDown();
           break;
       }
+    //  }else if (this.currentPlayer == "player2"){
+    //     switch (event.keyCode) {
+    //       case 37:
+    //         this.movementLeft();
+    //         break;
+    //       case 38:
+    //         this.movementUp();
+    //         break;
+    //       case 39:
+    //         this.movementRight();
+    //         break;
+    //       case 40:
+    //         this.movementDown();
+    //         break;
+    //     }
+    //  }
     }.bind(this));
   }
   stealItem () {
@@ -68,7 +90,7 @@ class Player {
       }
       this.upandDownIndex = 3;
       this.leftandRightIndex = 2;
-      this.checkDoor();
+      // this.checkDoor();
       this.currentPosition = game.boardArray[this.largeSquareY][this.largeSquareX][this.upandDownIndex][this.leftandRightIndex].location;
       $(game.boardArray[this.largeSquareY][this.largeSquareX][this.upandDownIndex][this.leftandRightIndex].domElement.contents).append(this.player);
 
