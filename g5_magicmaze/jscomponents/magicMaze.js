@@ -1,7 +1,7 @@
 
 
 class MagicMaze {
-  constructor( options, pawnOptions ) {
+  constructor(options, pawnOptions) {
     this.options = options;
     this.pawnOptions = pawnOptions;
     this.boardArray = [];
@@ -15,7 +15,7 @@ class MagicMaze {
   }
   makeGameBoard() {
     // debugger;
-    for (this.row = 0; this.row < this.options.height; this.row++) {
+    for (this.row = 0; this.row < this.options.height; this.row++)    {
       this.boardArray[this.row] = [];
       for (this.col = 0; this.col < this.options.width; this.col++) {
         var location = {
@@ -25,11 +25,13 @@ class MagicMaze {
         this.boardArray[this.row][this.col] = tile;
         this.tileDomObject = tile.render();
         this.gameBoardDom.append(this.tileDomObject);
+        $('.squareContainer').addClass('backOfTile')
         this.makePawnSquares();
       }
     }
   }
   makePawnSquares() {
+    // debugger;
     for (var row2 = 0; row2 < this.pawnOptions.height; row2++) {
       this.boardArray[this.row][this.col][row2] = [];
       for (var col2 = 0; col2 < this.pawnOptions.width; col2++) {

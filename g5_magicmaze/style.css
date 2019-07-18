@@ -1,3 +1,4 @@
+
 body{
   margin: 0;
   height: 100vh;
@@ -14,7 +15,7 @@ header{
   width: 100vw;
   height: 95vh;
   background-color: lightgreen;
-  display: flex;
+  display: inline-block; /*display: flex; */
 }
 #gameBoard{
   margin: auto;
@@ -35,13 +36,16 @@ header{
 } */
 .squareContainer{
   /* display: none; */
-  border: 2px solid whitesmoke;
-  background-color: black;
-  opacity:.5;
+  border: 2px solid red;
+  opacity:1;
   width: 100%;
   height: 100%;
   position: absolute;
-  /*new stuff*/
+}
+/* .backOfTile:nth-child(5){
+  display:none;
+} */
+.backOfTile{
   background-image: url(images/tileBack.png);
   background-position: center;
   background-size: cover;
@@ -54,7 +58,7 @@ header{
 }
 .pawnContainer{
   border: 1px solid orange;
-  background-color: grey;
+  background-color: lightgrey;
   width: 100%;
   height: 100%;
   position: static;

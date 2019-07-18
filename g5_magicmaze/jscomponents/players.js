@@ -1,7 +1,7 @@
 
-
-class Player{
+class Player {
   constructor() {
+
     this.player = $("<div>").addClass("player player1");
     // $(".player").css("background-color", "white");
     this.squareChild = 5;
@@ -59,6 +59,6 @@ class Player{
     // game.boardArray = [1][1][0][1]
     ++this.leftandRightIndex;
     // $(".square:nth-child(5) .pawn:nth-child(" + this.pawnChild + ") .pawnContainer").append(this.player)
-  }
 
+  }
 }
