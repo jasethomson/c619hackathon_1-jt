@@ -3,22 +3,22 @@ $(document).ready(initializeApp);
 var game = null;
 
 function initializeApp() {
-  $('.squareCellContents').on('click',clickToUnhideCard);
-  var magicMazeConfig = {
+  $('.backOfTile').removeClass();
+  var tileConfig = {
     height: 3,
     width: 3,
   }
-  var pawnConfig = {
+  var squareConfig = {
     height: 4,
     width: 4
   }
-  game = new MagicMaze(magicMazeConfig, pawnConfig);
+  game = new MagicMaze(tileConfig, squareConfig);
   game.makeGameBoard();
-
+  $('#gameContainer').on('click', clickToUnhideCard);
   var newPlayer = new Player();
 }
 function clickToUnhideCard(event) {
-  var clickCurrentTile = $(event.currentTarget);
+  var clickCurrentTile = $(event.target);
   console.log(clickCurrentTile);
-
+  $(clickCurrentTile).removeClass('backOfTile');
 }
