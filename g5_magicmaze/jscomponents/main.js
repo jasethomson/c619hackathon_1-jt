@@ -19,8 +19,6 @@ function initializeApp() {
   var newPlayer = new Player();
   var redItem = new RedItem();
   var redExit = new RedExit();
-  debugger;
-  var timerInstance = new Header();
 }
 function clickToUnhideCard(event) {
   var clickCurrentTile = $(event.target);

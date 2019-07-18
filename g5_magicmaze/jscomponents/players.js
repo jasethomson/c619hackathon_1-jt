@@ -47,7 +47,6 @@ class Player {
     console.log(game.boardArray[1][1][0][1]);
   }
   movementUp() {
-    debugger;
     this.upandDownIndex--;
     $(game.boardArray[1][1][this.upandDownIndex][1].domElement.contents).append(this.player);
 
