@@ -21,13 +21,13 @@ class Player {
     // console.log(this.currentPosition.location.x)
     // $('.pawnContainer').append(this.player);
 
-    window.addEventListener('keydown', function(event) {
+    window.addEventListener('keydown', function (event) {
       console.log('Key was pressed:', this);
 
       switch (event.keyCode) {
 
         case 37:
-         this.movementLeft(); // execute a function by passing parameter
+          this.movementLeft(); // execute a function by passing parameter
           break;
         case 38:
           this.movementUp();
@@ -41,12 +41,13 @@ class Player {
       }
     }.bind(this));
   }
-  practice(){
+  practice() {
 
     console.log(game.boardArray[1][1][1][1]);
     console.log(game.boardArray[1][1][0][1]);
   }
   movementUp() {
+    debugger;
     this.upandDownIndex--;
     $(game.boardArray[1][1][this.upandDownIndex][1].domElement.contents).append(this.player);
 
@@ -54,21 +55,24 @@ class Player {
     // --this.upandDownIndex ;
     // this.currentPosition = game.boardArray[1][1][--this.upandDownIndex][this.leftandRightIndex];
     // return this.currentPosition;
-        // $(".square:nth-child(5) .pawn:nth-child("+this.pawnChild+") .pawnContainer").append(this.player)
+    // $(".square:nth-child(5) .pawn:nth-child("+this.pawnChild+") .pawnContainer").append(this.player)
   }
   movementDown() {
     // game.boardArray = [1][1][0][1]
-    ++this.upandDownIndex;
+    this.upandDownIndex++;
+    $(game.boardArray[1][1][this.upandDownIndex][1].domElement.contents).append(this.player);
     // $(".square:nth-child(5) .pawn:nth-child(" + this.pawnChild + ") .pawnContainer").append(this.player)
   }
   movementLeft() {
     // game.boardArray = [1][1][0][1]
-    --this.leftandRightIndex;
+    this.leftandRightIndex--;
+    $(game.boardArray[1][1][this.upandDownIndex][this.leftandRightIndex].domElement.contents).append(this.player);
     // $(".square:nth-child(5) .pawn:nth-child(" + this.pawnChild + ") .pawnContainer").append(this.player)
   }
   movementRight() {
     // game.boardArray = [1][1][0][1]
-    ++this.leftandRightIndex;
+    this.leftandRightIndex++;
+    $(game.boardArray[1][1][this.upandDownIndex][this.leftandRightIndex].domElement.contents).append(this.player);
     // $(".square:nth-child(5) .pawn:nth-child(" + this.pawnChild + ") .pawnContainer").append(this.player)
 
   }
@@ -76,13 +80,15 @@ class Player {
 class RedItem {
   constructor() {
     this.redItem = $("<div>").addClass("item");
-    $(".square:nth-child(5) .pawn:nth-child(2) .pawnContainer").append(this.redItem)
+    // $(".square:nth-child(5) .pawn:nth-child(2) .pawnContainer").append(this.redItem)
+    $(game.boardArray[1][1][0][0].domElement.contents).append(this.redItem);
   }
 }
 
 class RedExit {
   constructor() {
     this.exit = $("<div>").addClass("exit")
-    $(".square:nth-child(5) .pawn:nth-child(17) .pawnContainer").append(this.exit)
+    // $(".square:nth-child(5) .pawn:nth-child(17) .pawnContainer").append(this.exit)
+    $(game.boardArray[1][1][3][3].domElement.contents).append(this.exit);
   }
 }
