@@ -73,3 +73,16 @@ class Player {
 
   }
 }
+class RedItem {
+  constructor() {
+    this.redItem = $("<div>").addClass("item");
+    $(".square:nth-child(5) .pawn:nth-child(2) .pawnContainer").append(this.redItem)
+  }
+}
+
+class RedExit {
+  constructor() {
+    this.exit = $("<div>").addClass("exit")
+    $(".square:nth-child(5) .pawn:nth-child(17) .pawnContainer").append(this.exit)
+  }
+}
