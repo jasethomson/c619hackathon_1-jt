@@ -19,11 +19,16 @@ function initializeApp() {
   var newPlayer = new Player();
   var redItem = new RedItem();
   var redExit = new RedExit();
-  debugger;
-  var timerInstance = new Header();
+  checkItem();
 }
 function clickToUnhideCard(event) {
   var clickCurrentTile = $(event.target);
   console.log(clickCurrentTile);
   $(clickCurrentTile).removeClass('backOfTile');
+}
+function checkItem (){
+  if ($("div .item") == $("div .player  ")) {
+    this.winCondition = true;
+    console.log('win condition', this.winCondition)
+  }
 }
