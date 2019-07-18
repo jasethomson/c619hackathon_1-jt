@@ -89,3 +89,31 @@ header{
 .toggleDisplay{
   display: none;
 }
+.youWin {
+  display: none;
+  background-color: #fefefe;
+  border: 2px solid black;
+  color: red;
+  width: 25%;
+  height: 20%;
+  position: absolute;
+  left: 38%;
+  top: 30%;
+  font-size: 6vmin;
+  border-radius: 25px;
+  text-align: center;
+  padding-top: 10px;
+}
+.youWin > button {
+  display: none;
+  background-color: #008CBA;
+  font-size: 16px;
+  color: white;
+  padding: 2px;
+  position: absolute;
+  top: 50%;
+  left: 40%;
+}
+.hidden{
+  display: none;
+}

@@ -9,6 +9,7 @@ class Tile {
     };
   }
   render() {
+    debugger;
     this.domElement.container = $("<div>").addClass('square');
     this.domElement.contents = $("<div>").addClass('squareContainer');
     this.domElement.container.append(this.domElement.contents);

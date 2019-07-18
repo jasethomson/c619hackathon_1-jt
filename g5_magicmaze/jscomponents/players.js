@@ -10,6 +10,8 @@ class Player {
     this.downIndex = 1;
     this.leftandRightIndex = 1;
     this.rightIndex = 1;
+    this.stolenItem = false;
+    this.winTheGame = false;
     // this.clickToUnhideCard = this.clickToUnhideCard.bind(this);
     this.magicMazeAccess = new MagicMaze();
 
@@ -17,17 +19,13 @@ class Player {
     $(game.boardArray[1][1][this.upandDownIndex][1].domElement.contents).append(this.player);
     // this.currentPosition = game.boardArray[1][1][this.upandDownIndex][this.leftandRightIndex];
 
-    this.currentPosition = game.boardArray[1][1][1][1];
+    // this.currentPosition = game.boardArray[1][1][1][1];
     // console.log(this.currentPosition.location.x)
     // $('.pawnContainer').append(this.player);
-
     window.addEventListener('keydown', function (event) {
-      console.log('Key was pressed:', this);
-
       switch (event.keyCode) {
-
         case 37:
-          this.movementLeft(); // execute a function by passing parameter
+          this.movementLeft();
           break;
         case 38:
           this.movementUp();
@@ -41,40 +39,33 @@ class Player {
       }
     }.bind(this));
   }
-  practice() {
-
-    console.log(game.boardArray[1][1][1][1]);
-    console.log(game.boardArray[1][1][0][1]);
+  stealItem () {
+    if ($(game.boardArray[1][1][this.upandDownIndex][1].domElement.contents).append(this.player) === $(game.boardArray[1][1][0][0].domElement.contents).append(this.player)){
+      this.stolenItem = true;
+      console.log('race to the exit!', this.stolenItem);
+    }
+  }
+  getToExit() {
+    if ($(game.boardArray[1][1][this.upandDownIndex][1].domElement.contents).append(this.player) === $(game.boardArray[1][1][3][3].domElement.contents).append(this.player)) {
+      this.winTheGame = true;
+      console.log('you win!', this.winTheGame);
+    }
   }
   movementUp() {
-    debugger;
     this.upandDownIndex--;
     $(game.boardArray[1][1][this.upandDownIndex][1].domElement.contents).append(this.player);
-
-    // game.boardArray = [1][1][0][1]
-    // --this.upandDownIndex ;
-    // this.currentPosition = game.boardArray[1][1][--this.upandDownIndex][this.leftandRightIndex];
-    // return this.currentPosition;
-    // $(".square:nth-child(5) .pawn:nth-child("+this.pawnChild+") .pawnContainer").append(this.player)
   }
   movementDown() {
-    // game.boardArray = [1][1][0][1]
     this.upandDownIndex++;
     $(game.boardArray[1][1][this.upandDownIndex][1].domElement.contents).append(this.player);
-    // $(".square:nth-child(5) .pawn:nth-child(" + this.pawnChild + ") .pawnContainer").append(this.player)
   }
   movementLeft() {
-    // game.boardArray = [1][1][0][1]
     this.leftandRightIndex--;
     $(game.boardArray[1][1][this.upandDownIndex][this.leftandRightIndex].domElement.contents).append(this.player);
-    // $(".square:nth-child(5) .pawn:nth-child(" + this.pawnChild + ") .pawnContainer").append(this.player)
   }
   movementRight() {
-    // game.boardArray = [1][1][0][1]
     this.leftandRightIndex++;
     $(game.boardArray[1][1][this.upandDownIndex][this.leftandRightIndex].domElement.contents).append(this.player);
-    // $(".square:nth-child(5) .pawn:nth-child(" + this.pawnChild + ") .pawnContainer").append(this.player)
-
   }
 }
 class RedItem {
