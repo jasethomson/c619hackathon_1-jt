@@ -12,12 +12,15 @@ function initializeApp() {
     height: 4,
     width: 4
   }
+
   game = new MagicMaze(tileConfig, squareConfig);
   game.makeGameBoard();
   $('#gameContainer').on('click', clickToUnhideCard);
   var newPlayer = new Player();
   var redItem = new RedItem();
   var redExit = new RedExit();
+  debugger;
+  var timerInstance = new Header();
 }
 function clickToUnhideCard(event) {
   var clickCurrentTile = $(event.target);
