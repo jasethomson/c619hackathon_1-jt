@@ -45,3 +45,17 @@ function checkItem (){
     console.log('win condition', this.winCondition)
   }
 }
+function startTimer() {
+  var counter = 2;
+  var countDown = setInterval(function() {
+    counter--;
+    $("#timer").text(counter);
+    if (counter === 0) {
+      $(".youLose").removeClass("hidden");
+      clearInterval(countDown);
+      $("#timer").text("Time's Up!");
+    }
+  }, 500);
+  console.log("timer started")
+}
+
