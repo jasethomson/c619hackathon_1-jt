@@ -15,13 +15,18 @@ function initializeApp() {
   game = new MagicMaze(tileConfig, squareConfig);
   game.makeGameBoard();
   $('#gameContainer').on('click', clickToUnhideCard);
-  var newPlayer = new Player();
+  var newPlayer1 = new Player("red", 1);
+  var newPlayer2 = new Player("blue", 2);
   var redItem = new RedItem();
   var redExit = new RedExit();
+  var blueItem = new BlueItem();
+  var blueExit = new BlueExit();
+  $("#timerButton").on("click", startTimer);
   checkItem();
   var winningModal = new Modal();
   winningModal.createWinningDiv();
-  $(".youWin").addClass('hidden');
+  winningModal.createLosingDiv();
+  // $(".youWin").addClass("hidden");
 }
 function clickToUnhideCard(event) {
   var clickCurrentTile = $(event.target);
@@ -32,4 +37,18 @@ function checkItem (){
     this.winCondition = true;
     console.log('win condition', this.winCondition)
   }
+}
+
+function startTimer() {
+  var counter = 2;
+  var countDown = setInterval(function() {
+    counter--;
+    $("#timer").text(counter);
+    if (counter === 0) {
+      $(".youLose").removeClass("hidden");
+      clearInterval(countDown);
+      $("#timer").text("Time's Up!");
+    }
+  }, 500);
+  console.log("timer started")
 }
