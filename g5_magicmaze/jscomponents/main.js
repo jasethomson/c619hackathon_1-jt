@@ -1,7 +1,7 @@
 $(document).ready(initializeApp);
 
 var game = null;
-
+var currentPlayer = $(".player1");
 function initializeApp() {
   $('.backOfTile').removeClass();
   var tileConfig = {
@@ -15,12 +15,17 @@ function initializeApp() {
   game = new MagicMaze(tileConfig, squareConfig);
   game.makeGameBoard();
   $('#gameContainer').on('click', clickToUnhideCard);
-  var newPlayer1 = new Player("red", 1);
-  var newPlayer2 = new Player("blue", 2);
+  var newPlayer1 = new Player("red", 1, 1, "player1");
+  // var newPlayer2 = new Player("blue", 2, 2, "player2");
   var redItem = new RedItem();
   var redExit = new RedExit();
   var blueItem = new BlueItem();
   var blueExit = new BlueExit();
+  // if (currentPlayer == $(".player1")){
+  //   newPlayer1.playerMove
+  // }
+  $("#greenPawn").on("click", changePlayer);
+  $("#yellowPawn").on("click", changePlayer);
   $("#timerButton").on("click", startTimer);
   checkItem();
   var winningModal = new Modal();
@@ -28,6 +33,14 @@ function initializeApp() {
   winningModal.createLosingDiv();
   $(".youWin").addClass("hidden");
 }
+
+function changePlayer(event){
+  if (newPlayer1.currentPlayer == "player1"){
+    newPlayer2.currentPlayer = "player2";
+  }else if(newPlayer2.currentPlayer == "player2")
+  newPlayer1.currentPlayer = "player1"
+}
+
 function clickToUnhideCard(event) {
   var clickCurrentTile = $(event.target);
   $(clickCurrentTile).removeClass('backOfTile');
