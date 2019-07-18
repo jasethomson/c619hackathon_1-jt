@@ -16,6 +16,8 @@ function initializeApp() {
   game.makeGameBoard();
   $('#gameContainer').on('click', clickToUnhideCard);
   var newPlayer = new Player();
+  var redItem = new RedItem();
+  var redExit = new RedExit();
 }
 function clickToUnhideCard(event) {
   var clickCurrentTile = $(event.target);
