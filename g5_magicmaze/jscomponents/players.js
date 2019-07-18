@@ -10,35 +10,46 @@ class Player {
     this.downIndex = 1;
     this.leftandRightIndex = 1;
     this.rightIndex = 1;
-
+    // this.clickToUnhideCard = this.clickToUnhideCard.bind(this);
     this.magicMazeAccess = new MagicMaze();
 
-    $(".square:nth-child("+this.squareChild+") .pawn:nth-child("+this.pawnChild+") .pawnContainer").append(this.player);
-    // debugger;
+    // $(".square:nth-child("+this.squareChild+") .pawn:nth-child("+this.pawnChild+") .pawnContainer").append(this.player);
+    $(game.boardArray[1][1][this.upandDownIndex][1].domElement.contents).append(this.player);
     // this.currentPosition = game.boardArray[1][1][this.upandDownIndex][this.leftandRightIndex];
 
     this.currentPosition = game.boardArray[1][1][1][1];
-    console.log(this.currentPosition.location.x)
+    // console.log(this.currentPosition.location.x)
     // $('.pawnContainer').append(this.player);
-    window.addEventListener('keydown', function (event) {
+
+    window.addEventListener('keydown', function(event) {
+      console.log('Key was pressed:', this);
+
       switch (event.keyCode) {
+
         case 37:
-          movementLeft(); // execute a function by passing parameter
+         this.movementLeft(); // execute a function by passing parameter
           break;
         case 38:
-          movementUp();
+          this.movementUp();
           break;
         case 39:
-          movementRight();
+          this.movementRight();
           break;
         case 40:
-          movementDown();
+          this.movementDown();
           break;
       }
-    });
+    }.bind(this));
+  }
+  practice(){
+
+    console.log(game.boardArray[1][1][1][1]);
+    console.log(game.boardArray[1][1][0][1]);
   }
   movementUp() {
-    this.currentPosition.location.x--;
+    this.upandDownIndex--;
+    $(game.boardArray[1][1][this.upandDownIndex][1].domElement.contents).append(this.player);
+
     // game.boardArray = [1][1][0][1]
     // --this.upandDownIndex ;
     // this.currentPosition = game.boardArray[1][1][--this.upandDownIndex][this.leftandRightIndex];

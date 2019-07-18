@@ -16,6 +16,7 @@ function initializeApp() {
   game.makeGameBoard();
   $('#gameContainer').on('click', clickToUnhideCard);
   var newPlayer = new Player();
+  // newPlayer.practice();
 }
 function clickToUnhideCard(event) {
   var clickCurrentTile = $(event.target);
