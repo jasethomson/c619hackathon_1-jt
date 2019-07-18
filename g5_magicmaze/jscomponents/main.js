@@ -26,7 +26,7 @@ function initializeApp() {
   var winningModal = new Modal();
   winningModal.createWinningDiv();
   winningModal.createLosingDiv();
-  // $(".youWin").addClass("hidden");
+  $(".youWin").addClass("hidden");
 }
 function clickToUnhideCard(event) {
   var clickCurrentTile = $(event.target);
