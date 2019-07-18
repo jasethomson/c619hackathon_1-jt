@@ -21,6 +21,15 @@ class Header {
 
 }
 
+// class Timer {
+//   constructor() {
+//     this.timerButton = $("#timerButton").on("click", this.startTimer)
+//   }
+// }
+
+// startTimer() {
+//   $("#timer").text("you pressed start")
+// }
 
 // class Timer {
 //   constructor(){
