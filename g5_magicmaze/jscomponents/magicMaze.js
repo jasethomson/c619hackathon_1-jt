@@ -14,7 +14,6 @@ class MagicMaze {
     this.col = null;
   }
   makeGameBoard() {
-    debugger;
     for (this.row = 0; this.row < this.options.height; this.row++)    {
       this.boardArray[this.row] = [];
       for (this.col = 0; this.col < this.options.width; this.col++) {
@@ -32,7 +31,6 @@ class MagicMaze {
     $(".square:nth-child(5) .squareContainer").removeClass("backOfTile");
   }
   makePawnSquares() {
-    debugger;
     for (var row2 = 0; row2 < this.pawnOptions.height; row2++) {
       this.boardArray[this.row][this.col][row2] = [];
       for (var col2 = 0; col2 < this.pawnOptions.width; col2++) {

@@ -9,7 +9,7 @@
 }
 
 .player1 {
-  background-color: red;
+  /* background-color: red; */
 }
 
 .item {
@@ -18,7 +18,14 @@
   z-index: 5;
   background-position: center;
   background-size: cover;
+}
+
+.redItem {
   background-image: url("./images/redSword.jpg")
+}
+
+.blueItem {
+  background-image: url("./images/blueSword.jpg")
 }
 
 .exit {
@@ -27,7 +34,14 @@
   z-index: 5;
   background-position: center;
   background-size: cover;
+}
+
+.redExit {
   background-image: url("./images/redExit.png")
+}
+
+.blueExit {
+  background-image: url("./images/blueExit.jpg")
 }
 
 .door{
