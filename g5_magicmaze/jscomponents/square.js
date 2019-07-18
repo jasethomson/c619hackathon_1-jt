@@ -9,6 +9,7 @@ class Square {
     };
   }
   render() {
+    debugger;
     this.domElement.container = $("<div>").addClass('pawn');
     this.domElement.contents = $("<div>").addClass('pawnContainer');
     this.domElement.container.append(this.domElement.contents);

@@ -8,6 +8,9 @@ class Player {
     this.upandDownIndex = 1;
     this.leftandRightIndex = 1;
     this.winCondition = false;
+    this.rightIndex = 1;
+    this.stolenItem = false;
+    this.winTheGame = false;
     // this.clickToUnhideCard = this.clickToUnhideCard.bind(this);
     this.magicMazeAccess = new MagicMaze();
     this.doorChecker = $(game.boardArray[this.largeSquareY][this.largeSquareX][0][2].domElement.contents);
@@ -17,14 +20,10 @@ class Player {
     this.currentContents = game.boardArray[this.largeSquareY][this.largeSquareX][this.upandDownIndex][this.leftandRightIndex]
     this.currentPosition = game.boardArray[this.largeSquareY][this.largeSquareX][this.upandDownIndex][this.leftandRightIndex].location;
 
-    this.checkDoor();
     window.addEventListener('keydown', function (event) {
-      console.log('Key was pressed:', this);
-
       switch (event.keyCode) {
-
         case 37:
-          this.movementLeft(); // execute a function by passing parameter
+          this.movementLeft();
           break;
         case 38:
           this.movementUp();
@@ -40,10 +39,17 @@ class Player {
       }
     }.bind(this));
   }
-  practice() {
-
-    console.log(game.boardArray[1][1][1][1]);
-    console.log(game.boardArray[1][1][0][1]);
+  stealItem () {
+    if ($(game.boardArray[1][1][this.upandDownIndex][1].domElement.contents).append(this.player) === $(game.boardArray[1][1][0][0].domElement.contents).append(this.player)){
+      this.stolenItem = true;
+      console.log('race to the exit!', this.stolenItem);
+    }
+  }
+  getToExit() {
+    if ($(game.boardArray[1][1][this.upandDownIndex][1].domElement.contents).append(this.player) === $(game.boardArray[1][1][3][3].domElement.contents).append(this.player)) {
+      this.winTheGame = true;
+      console.log('you win!', this.winTheGame);
+    }
   }
   movementUp() {
     this.upandDownIndex--;
