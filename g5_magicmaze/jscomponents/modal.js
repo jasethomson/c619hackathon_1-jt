@@ -42,13 +42,14 @@ class Modal {
   }
   losingTimer() {
     $(".loseRest").removeClass("hidden")
-    var losingCounter = 6;
-    this.losingCountDown = setInterval(function() {
+    var losingCounter = 4;
+    var losingCountDown = setInterval(function() {
       losingCounter--;
       $(".loseReset").text("Game starting in " + losingCounter)
       if (losingCounter === 0) {
         $(".youLose").addClass("hidden");
-        clearInterval(this.losingCountDown);
+        clearInterval(losingCountDown);
+        $(".loseReset").text("");
         return;
       }
     }, 1000)
