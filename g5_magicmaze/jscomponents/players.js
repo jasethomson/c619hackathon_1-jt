@@ -1,8 +1,9 @@
 
 class Player {
-  constructor() {
+  constructor( color, position ) {
 
     this.player = $("<div>").addClass("player player1");
+    this.player.css("background-color", color);
     this.largeSquareX = 1;
     this.largeSquareY = 1;
     this.upandDownIndex = 1;
@@ -20,7 +21,9 @@ class Player {
       right: $(game.boardArray[this.largeSquareY][this.largeSquareX][1][3].domElement.contents).addClass("door")
     }
 
-    $(game.boardArray[this.largeSquareY][this.largeSquareX][this.upandDownIndex][this.leftandRightIndex].domElement.contents).append(this.player);
+    // starting position //
+    $(game.boardArray[this.largeSquareY][this.largeSquareX][position][position].domElement.contents).append(this.player);
+    
     this.currentContents = game.boardArray[this.largeSquareY][this.largeSquareX][this.upandDownIndex][this.leftandRightIndex]
     this.currentPosition = game.boardArray[this.largeSquareY][this.largeSquareX][this.upandDownIndex][this.leftandRightIndex].location;
     // this.checkDoor();
@@ -179,15 +182,31 @@ class Player {
 class RedItem {
   constructor() {
     this.item = $(game.boardArray[1][1][0][0].domElement.contents);
-    this.item.addClass("item");
+    this.item.addClass("item redItem");
+  }
+}
 
+class BlueItem {
+  constructor() {
+    this.item = $(game.boardArray[1][1][0][3].domElement.contents);
+    this.item.addClass("item blueItem");
   }
 }
 
 class RedExit {
   constructor() {
     this.exit = $(game.boardArray[1][1][3][3].domElement.contents);
-    this.exit.addClass("exit");
+    this.exit.addClass("exit redExit");
+    $(this.doorChecker).parent(".square").toggleClass("exit")
+  }
+}
+
+
+
+class BlueExit {
+  constructor() {
+    this.exit = $(game.boardArray[1][1][3][0].domElement.contents);
+    this.exit.addClass("exit blueExit");
     $(this.doorChecker).parent(".square").toggleClass("exit")
   }
 }
