@@ -3,25 +3,23 @@ class Player {
   constructor() {
 
     this.player = $("<div>").addClass("player player1");
-    // $(".player").css("background-color", "white");
-    this.squareChild = 5;
-    this.pawnChild = 7;
+    this.largeSquareX = 1;
+    this.largeSquareY = 1;
     this.upandDownIndex = 1;
-    this.downIndex = 1;
     this.leftandRightIndex = 1;
+    this.winCondition = false;
     this.rightIndex = 1;
     this.stolenItem = false;
     this.winTheGame = false;
     // this.clickToUnhideCard = this.clickToUnhideCard.bind(this);
     this.magicMazeAccess = new MagicMaze();
+    this.doorChecker = $(game.boardArray[this.largeSquareY][this.largeSquareX][0][2].domElement.contents);
+    this.doorChecker.addClass("door");
 
-    // $(".square:nth-child("+this.squareChild+") .pawn:nth-child("+this.pawnChild+") .pawnContainer").append(this.player);
-    $(game.boardArray[1][1][this.upandDownIndex][1].domElement.contents).append(this.player);
-    // this.currentPosition = game.boardArray[1][1][this.upandDownIndex][this.leftandRightIndex];
+    $(game.boardArray[this.largeSquareY][this.largeSquareX][this.upandDownIndex][1].domElement.contents).append(this.player);
+    this.currentContents = game.boardArray[this.largeSquareY][this.largeSquareX][this.upandDownIndex][this.leftandRightIndex]
+    this.currentPosition = game.boardArray[this.largeSquareY][this.largeSquareX][this.upandDownIndex][this.leftandRightIndex].location;
 
-    // this.currentPosition = game.boardArray[1][1][1][1];
-    // console.log(this.currentPosition.location.x)
-    // $('.pawnContainer').append(this.player);
     window.addEventListener('keydown', function (event) {
       switch (event.keyCode) {
         case 37:
@@ -36,6 +34,8 @@ class Player {
         case 40:
           this.movementDown();
           break;
+        case (event.keyCode == 13 && this.currentPosition == game.boardArray[1][1][0][2].location):
+          this.checkDoor();
       }
     }.bind(this));
   }
@@ -53,33 +53,62 @@ class Player {
   }
   movementUp() {
     this.upandDownIndex--;
-    $(game.boardArray[1][1][this.upandDownIndex][1].domElement.contents).append(this.player);
+    if (this.upandDownIndex == -1){
+      this.largeSquareY = 0;
+      this.currentPosition = game.boardArray[this.largeSquareY][this.largeSquareX][3][2].location;
+      $(game.boardArray[this.largeSquareY][this.largeSquareX][3][2].domElement.contents).append(this.player);
+      this.upandDownIndex = 3;
+      this.leftandRightIndex = 2;
+    }else{
+      $(game.boardArray[this.largeSquareY][this.largeSquareX][this.upandDownIndex][this.leftandRightIndex].domElement.contents).append(this.player);
+      console.log("Up" + this.currentPosition);
+    }
+
+
+
+
+    return this.currentPosition;
   }
   movementDown() {
     this.upandDownIndex++;
-    $(game.boardArray[1][1][this.upandDownIndex][1].domElement.contents).append(this.player);
+    this.currentPosition = game.boardArray[this.largeSquareY][this.largeSquareX][this.upandDownIndex][this.leftandRightIndex].location
+    $(game.boardArray[this.largeSquareY][this.largeSquareX][this.upandDownIndex][this.leftandRightIndex].domElement.contents).append(this.player);
+    console.log("Down" + this.currentPosition);
+    return this.currentPosition;
   }
   movementLeft() {
     this.leftandRightIndex--;
-    $(game.boardArray[1][1][this.upandDownIndex][this.leftandRightIndex].domElement.contents).append(this.player);
+    this.currentPosition = game.boardArray[this.largeSquareY][this.largeSquareX][this.upandDownIndex][this.leftandRightIndex].location;
+    $(game.boardArray[this.largeSquareY][this.largeSquareX][this.upandDownIndex][this.leftandRightIndex].domElement.contents).append(this.player);
+    console.log("left" + this.currentPosition);
+    return this.currentPosition
   }
   movementRight() {
     this.leftandRightIndex++;
-    $(game.boardArray[1][1][this.upandDownIndex][this.leftandRightIndex].domElement.contents).append(this.player);
+    this.currentPosition = game.boardArray[this.largeSquareY][this.largeSquareX][this.upandDownIndex][this.leftandRightIndex].location;
+    $(game.boardArray[this.largeSquareY][this.largeSquareX][this.upandDownIndex][this.leftandRightIndex].domElement.contents).append(this.player);
+    console.log("right" + this.currentPosition);
+    return this.currentPosition;
+  }
+  checkDoor(){
+
+      this.gameBoard = $(this.doorChecker).closest("#gameBoard").find(".square:nth-child(2) .pawn:nth-child(16) .pawnContainer");
+      this.gameBoard.toggleClass("door");
+
   }
 }
 class RedItem {
   constructor() {
-    this.redItem = $("<div>").addClass("item");
-    // $(".square:nth-child(5) .pawn:nth-child(2) .pawnContainer").append(this.redItem)
-    $(game.boardArray[1][1][0][0].domElement.contents).append(this.redItem);
+    this.item = $(game.boardArray[1][1][0][0].domElement.contents);
+    this.item.addClass("item");
+
   }
 }
 
 class RedExit {
   constructor() {
-    this.exit = $("<div>").addClass("exit")
-    // $(".square:nth-child(5) .pawn:nth-child(17) .pawnContainer").append(this.exit)
-    $(game.boardArray[1][1][3][3].domElement.contents).append(this.exit);
+    this.exit = $(game.boardArray[1][1][3][3].domElement.contents);
+    this.exit.addClass("exit");
+    $(this.doorChecker).parent(".square").toggleClass("exit")
   }
 }

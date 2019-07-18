@@ -18,10 +18,17 @@ function initializeApp() {
   var newPlayer = new Player();
   var redItem = new RedItem();
   var redExit = new RedExit();
+  checkItem();
   var winningModal = new Modal();
   winningModal.createWinningDiv();
 }
 function clickToUnhideCard(event) {
   var clickCurrentTile = $(event.target);
   $(clickCurrentTile).removeClass('backOfTile');
+}
+function checkItem (){
+  if ($("div .item") == $("div .player  ")) {
+    this.winCondition = true;
+    console.log('win condition', this.winCondition)
+  }
 }

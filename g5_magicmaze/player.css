@@ -13,25 +13,29 @@
 }
 
 .item {
-  height: 5vh;
-  width: 3vw;
+  height: 100%;
+  width: 100%;
   z-index: 5;
-  margin-top: 1vh;
-  margin-right: auto;
-  margin-left: auto;;
   background-position: center;
   background-size: cover;
   background-image: url("./images/redSword.jpg")
 }
 
 .exit {
-  height: 5vh;
-  width: 3vw;
+  height: 100%;
+  width: 100%;
   z-index: 5;
-  margin-top: 1vh;
-  margin-right: auto;
-  margin-left: auto;
   background-position: center;
   background-size: cover;
   background-image: url("./images/redExit.png")
+}
+
+.door{
+  height: 100%;
+  width: 100%;
+  z-index: 5;
+  margin:auto;
+  background-position: center;
+  background-size: cover;
+  background-color: yellow;
 }
