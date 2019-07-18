@@ -1,7 +1,6 @@
 
 class Player {
   constructor() {
-
     this.player = $("<div>").addClass("player player1");
     this.largeSquareX = 1;
     this.largeSquareY = 1;
@@ -15,7 +14,6 @@ class Player {
     this.magicMazeAccess = new MagicMaze();
     this.doorChecker = $(game.boardArray[this.largeSquareY][this.largeSquareX][0][2].domElement.contents);
     this.doorChecker.addClass("door");
-
     $(game.boardArray[this.largeSquareY][this.largeSquareX][this.upandDownIndex][1].domElement.contents).append(this.player);
     this.currentContents = game.boardArray[this.largeSquareY][this.largeSquareX][this.upandDownIndex][this.leftandRightIndex]
     this.currentPosition = game.boardArray[this.largeSquareY][this.largeSquareX][this.upandDownIndex][this.leftandRightIndex].location;
@@ -40,14 +38,16 @@ class Player {
     }.bind(this));
   }
   stealItem () {
-    if ($(game.boardArray[1][1][this.upandDownIndex][1].domElement.contents).append(this.player) === $(game.boardArray[1][1][0][0].domElement.contents).append(this.player)){
+    // debugger;
+    if (this.currentPosition == game.boardArray[1][1][0][0].location){
       this.stolenItem = true;
       console.log('race to the exit!', this.stolenItem);
     }
   }
   getToExit() {
-    if ($(game.boardArray[1][1][this.upandDownIndex][1].domElement.contents).append(this.player) === $(game.boardArray[1][1][3][3].domElement.contents).append(this.player)) {
+    if (this.currentPosition == game.boardArray[1][1][3][3].location) {
       this.winTheGame = true;
+      $(".youWin").removeClass('hidden');
       console.log('you win!', this.winTheGame);
     }
   }
@@ -59,14 +59,13 @@ class Player {
       $(game.boardArray[this.largeSquareY][this.largeSquareX][3][2].domElement.contents).append(this.player);
       this.upandDownIndex = 3;
       this.leftandRightIndex = 2;
+      this.checkDoor();
+      this.stealItem();
+      this.getToExit();
     }else{
       $(game.boardArray[this.largeSquareY][this.largeSquareX][this.upandDownIndex][this.leftandRightIndex].domElement.contents).append(this.player);
       console.log("Up" + this.currentPosition);
     }
-
-
-
-
     return this.currentPosition;
   }
   movementDown() {
@@ -74,6 +73,8 @@ class Player {
     this.currentPosition = game.boardArray[this.largeSquareY][this.largeSquareX][this.upandDownIndex][this.leftandRightIndex].location
     $(game.boardArray[this.largeSquareY][this.largeSquareX][this.upandDownIndex][this.leftandRightIndex].domElement.contents).append(this.player);
     console.log("Down" + this.currentPosition);
+    this.stealItem();
+    this.getToExit();
     return this.currentPosition;
   }
   movementLeft() {
@@ -81,6 +82,8 @@ class Player {
     this.currentPosition = game.boardArray[this.largeSquareY][this.largeSquareX][this.upandDownIndex][this.leftandRightIndex].location;
     $(game.boardArray[this.largeSquareY][this.largeSquareX][this.upandDownIndex][this.leftandRightIndex].domElement.contents).append(this.player);
     console.log("left" + this.currentPosition);
+    this.stealItem();
+    this.getToExit();
     return this.currentPosition
   }
   movementRight() {
@@ -88,20 +91,20 @@ class Player {
     this.currentPosition = game.boardArray[this.largeSquareY][this.largeSquareX][this.upandDownIndex][this.leftandRightIndex].location;
     $(game.boardArray[this.largeSquareY][this.largeSquareX][this.upandDownIndex][this.leftandRightIndex].domElement.contents).append(this.player);
     console.log("right" + this.currentPosition);
+    this.stealItem();
+    this.getToExit();
     return this.currentPosition;
   }
   checkDoor(){
-
       this.gameBoard = $(this.doorChecker).closest("#gameBoard").find(".square:nth-child(2) .pawn:nth-child(16) .pawnContainer");
       this.gameBoard.toggleClass("door");
-
+    $('.square:nth-child(2) > .squareContainer').removeClass('backOfTile');
   }
 }
 class RedItem {
   constructor() {
     this.item = $(game.boardArray[1][1][0][0].domElement.contents);
     this.item.addClass("item");
-
   }
 }
 

@@ -21,6 +21,7 @@ function initializeApp() {
   checkItem();
   var winningModal = new Modal();
   winningModal.createWinningDiv();
+  $(".youWin").addClass('hidden');
 }
 function clickToUnhideCard(event) {
   var clickCurrentTile = $(event.target);
