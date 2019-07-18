@@ -24,7 +24,7 @@ class Player {
     $(game.boardArray[this.largeSquareY][this.largeSquareX][position][position].domElement.contents).append(this.player);
     this.currentContents = game.boardArray[this.largeSquareY][this.largeSquareX][this.upandDownIndex][this.leftandRightIndex]
     this.currentPosition = game.boardArray[this.largeSquareY][this.largeSquareX][this.upandDownIndex][this.leftandRightIndex].location;
-    // this.checkDoor();
+    //
     window.addEventListener('keydown', function (event) {
       switch (event.keyCode) {
         case 37:
@@ -56,6 +56,9 @@ class Player {
       console.log('you win!', this.winTheGame);
     }
   }
+  // unhideBackTile(){
+  //   if(this.currentposition == "")
+  // }
   movementUp() {
     this.upandDownIndex--;
 
@@ -66,9 +69,15 @@ class Player {
         ++this.upandDownIndex
         return this.largeSquareY;
       }
+      // if(this.largeSquareY == 0){
+        debugger;
+      // this.nearestTile = $(this.doorChecker.up).closest("#gameBoard").find(".squareContainer:nth-child(2)")
+      $('.squareContainer:nth-child(2)').removeClass('backOfTile');
+      // }
+
       this.upandDownIndex = 3;
       this.leftandRightIndex = 2;
-      this.checkDoor();
+
       this.currentPosition = game.boardArray[this.largeSquareY][this.largeSquareX][this.upandDownIndex][this.leftandRightIndex].location;
       $(game.boardArray[this.largeSquareY][this.largeSquareX][this.upandDownIndex][this.leftandRightIndex].domElement.contents).append(this.player);
 

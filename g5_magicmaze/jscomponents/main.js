@@ -38,7 +38,6 @@ function checkItem (){
     console.log('win condition', this.winCondition)
   }
 }
-
 function startTimer() {
   var counter = 2;
   var countDown = setInterval(function() {
