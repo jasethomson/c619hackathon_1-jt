@@ -1,15 +1,20 @@
 
 class Player {
-  constructor( color, position ) {
-    this.player = $("<div>").addClass("player player1");
+  constructor( color, positionX , positionY , player) {
+    this.player = $("<div>").addClass("player", player);
+    // if (player == "player1"){
+    //   this.currentPlayer = player;
+    // }
+
     this.player.css("background-color", color);
     this.largeSquareX = 1;
     this.largeSquareY = 1;
-    this.upandDownIndex = 1;
-    this.leftandRightIndex = 1;
+    this.upandDownIndex = positionY;
+    this.leftandRightIndex = positionX;
     this.winCondition = false;
     this.rightIndex = 1;
-    this.stolenItem = false;
+    this.stolenItem1 = false;
+    this.stolenItem2 = false;
     this.winTheGame = false;
     // this.clickToUnhideCard = this.clickToUnhideCard.bind(this);
     this.magicMazeAccess = new MagicMaze();
@@ -21,11 +26,12 @@ class Player {
     }
 
     // starting position //
-    $(game.boardArray[this.largeSquareY][this.largeSquareX][position][position].domElement.contents).append(this.player);
+    $(game.boardArray[this.largeSquareY][this.largeSquareX][positionY][positionX].domElement.contents).append(this.player);
     this.currentContents = game.boardArray[this.largeSquareY][this.largeSquareX][this.upandDownIndex][this.leftandRightIndex]
     this.currentPosition = game.boardArray[this.largeSquareY][this.largeSquareX][this.upandDownIndex][this.leftandRightIndex].location;
-    //
+    $("#timerButton").on("click", this.startTimer);
     window.addEventListener('keydown', function (event) {
+
       switch (event.keyCode) {
         case 37:
           this.movementLeft();
@@ -40,17 +46,37 @@ class Player {
           this.movementDown();
           break;
       }
+    //  }else if (this.currentPlayer == "player2"){
+    //     switch (event.keyCode) {
+    //       case 37:
+    //         this.movementLeft();
+    //         break;
+    //       case 38:
+    //         this.movementUp();
+    //         break;
+    //       case 39:
+    //         this.movementRight();
+    //         break;
+    //       case 40:
+    //         this.movementDown();
+    //         break;
+    //     }
+    //  }
     }.bind(this));
   }
   stealItem () {
     // debugger;
-    if (this.currentPosition == game.boardArray[1][1][0][0].location){
-      this.stolenItem = true;
-      console.log('race to the exit!', this.stolenItem);
+    if (this.currentPosition == game.boardArray[0][0][0][0].location){
+      this.stolenItem1 = true;
+      console.log("got item 1")
+    }
+    if (this.currentPosition == game.boardArray[0][2][3][3].location) {
+      this.stolenItem2 = true;
+      console.log("got item 2")
     }
   }
   getToExit() {
-    if (this.currentPosition == game.boardArray[1][1][3][3].location) {
+    if (this.currentPosition == game.boardArray[2][1][3][3].location && $("#timer").text() > 1) {
       this.winTheGame = true;
       $(".youWin").removeClass('hidden');
       console.log('you win!', this.winTheGame);
@@ -192,35 +218,54 @@ class Player {
   //     this.gameBoard.toggleClass("door");
 
   // }
-}
-class RedItem {
-  constructor() {
-    this.item = $(game.boardArray[1][1][0][0].domElement.contents);
-    this.item.addClass("item redItem");
-  }
+
+
+startTimer() {
+  var counter = 61;
+  var countDown = setInterval(function() {
+    counter--;
+    console.log("$('#timer').val()")
+    $("#timer").text(counter);
+    if (counter === 0) {
+      $(".youLose").removeClass("hidden");
+      clearInterval(countDown);
+      $("#timer").text("Time's Up!");
+    }
+  }, 1000);
+  console.log("timer started")
 }
 
+}
+class RedItem1 {
+  constructor() {
+    this.item = $(game.boardArray[0][0][0][0].domElement.contents);
+    this.item.addClass("item redItem1");
+  }
+}
+class RedItem2 {
+  constructor() {
+    this.item = $(game.boardArray[0][2][3][3].domElement.contents);
+    this.item.addClass("item redItem2");
+  }
+}
+class RedExit {
+  constructor() {
+    this.exit = $(game.boardArray[2][1][3][3].domElement.contents);
+    this.exit.addClass("exit redExit");
+    $(this.doorChecker).parent(".square").toggleClass("exit")
+  }
+}
+/* for later
 class BlueItem {
   constructor() {
     this.item = $(game.boardArray[1][1][0][3].domElement.contents);
     this.item.addClass("item blueItem");
   }
 }
-
-class RedExit {
-  constructor() {
-    this.exit = $(game.boardArray[1][1][3][3].domElement.contents);
-    this.exit.addClass("exit redExit");
-    $(this.doorChecker).parent(".square").toggleClass("exit")
-  }
-}
-
-
-
 class BlueExit {
   constructor() {
     this.exit = $(game.boardArray[1][1][3][0].domElement.contents);
     this.exit.addClass("exit blueExit");
     $(this.doorChecker).parent(".square").toggleClass("exit")
   }
-}
+} */
