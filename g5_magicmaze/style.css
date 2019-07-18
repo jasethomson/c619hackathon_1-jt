@@ -38,7 +38,7 @@ header{
   width: 100vw;
   height: 95vh;
   background-color: lightgreen;
-  display: inline-block; /*display: flex; */
+  display: inline-block;
 }
 #gameBoard{
   margin: auto;
