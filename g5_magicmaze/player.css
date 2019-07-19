@@ -7,11 +7,6 @@
   margin-right: auto;
   margin-left: auto;
 }
-
-.player1 {
-  /* background-color: red; */
-}
-
 .item {
   height: 100%;
   width: 100%;
@@ -19,19 +14,12 @@
   background-position: center;
   background-size: cover;
 }
-
 .redItem1 {
   background-image: url("./images/redSword.jpg")
 }
-
 .redItem2 {
   background-image: url("./images/redSword.jpg")
 }
-
-/* .blueItem {
-  background-image: url("./images/blueSword.jpg")
-} */
-
 .exit {
   height: 100%;
   width: 100%;
@@ -39,15 +27,9 @@
   background-position: center;
   background-size: cover;
 }
-
 .redExit {
   background-image: url("./images/redExit.png")
 }
-
-/* .blueExit {
-  background-image: url("./images/blueExit.jpg")
-} */
-
 .door{
   height: 100%;
   width: 100%;
