@@ -18,10 +18,11 @@ function initializeApp() {
   }
   game = new MagicMaze(tileConfig, squareConfig);
   game.makeGameBoard();
-  $('#gameContainer').on('click', clickToUnhideCard);
+//   $('#gameContainer').on('click', clickToUnhideCard);
   var newPlayer1 = new Player("red", 1, 1, "player1",randomItemBigIndexY, randomItemBigIndexX, randomItemLittleIndexY, randomItemLittleIndexX);
   var redItem1 = new RedItem1(randomItemBigIndexY, randomItemBigIndexX, randomItemLittleIndexY, randomItemLittleIndexX);
   var redItem2 = new RedItem1(randomItemBigIndexX, randomItemBigIndexY, randomItemLittleIndexX, randomItemLittleIndexY);
+
   var redExit = new RedExit();
 
   checkItem();
@@ -36,10 +37,7 @@ function changePlayer(event){
   }else if(newPlayer2.currentPlayer == "player2")
   newPlayer1.currentPlayer = "player1"
 }
-function clickToUnhideCard(event) {
-  var clickCurrentTile = $(event.target);
-  $(clickCurrentTile).removeClass('backOfTile');
-}
+
 function checkItem (){
   if ($("div .item") == $("div .player  ")) {
     this.winCondition = true;
