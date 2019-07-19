@@ -11,6 +11,10 @@ class Player {
     this.rightIndex = 1;
     this.stolenItem1 = false;
     this.stolenItem2 = false;
+    this.item1 = $(".item redItem1");
+    this.item2 = $(".item redItem2");
+    this.retrieveItem1 = $("#firstItemContainer");
+    this.retreiveItem2 = $("#secondItemContainer")
     this.winTheGame = false;
     this.magicMazeAccess = new MagicMaze();
     this.doorChecker = {
@@ -43,15 +47,21 @@ class Player {
     }.bind(this));
   }
   stealItem () {
-    if (this.currentPosition == game.boardArray[0][0][0][0].location){
+    if (this.currentPosition === game.boardArray[0][0][0][0].location){
+      console.log("item1 grabbed");
       this.stolenItem1 = true;
+      this.retrieveItem1.addClass("retrieveItem");
+      this.item1.addClass("hidden");
     }
-    if (this.currentPosition == game.boardArray[0][2][3][3].location) {
+    if (this.currentPosition === game.boardArray[0][2][3][3].location) {
+      console.log("item2 grabbed");
       this.stolenItem2 = true;
+      this.retrieveItem2.addClass("retrieveItem");
+      this.item2.addClass("hidden");
     }
   }
   getToExit() {
-    if (this.currentPosition == game.boardArray[2][1][3][3].location && $("#timer").text() > 1 && this.stolenItem1 == true && this.stolenItem2 == true) {
+    if (this.currentPosition === game.boardArray[2][1][3][3].location && $("#timer").text() > 1 && this.stolenItem1 == true && this.stolenItem2 == true) {
       this.winTheGame = true;
       $(".youWin").removeClass('hidden');
     }
@@ -196,6 +206,5 @@ class RedExit {
   constructor() {
     this.exit = $(game.boardArray[2][1][3][3].domElement.contents);
     this.exit.addClass("exit redExit");
-    $(this.doorChecker).parent(".square").toggleClass("exit")
   }
 }
