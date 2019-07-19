@@ -6,7 +6,6 @@ class MagicMaze {
     this.boardArray = [];
     this.squareArray = [];
     this.realArray = [];
-    // this.realArray
     this.gameBoardDom = $("#gameBoard");
     this.tileDomObject = null;
     this.row = null;

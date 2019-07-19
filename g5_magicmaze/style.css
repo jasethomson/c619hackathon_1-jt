@@ -1,4 +1,3 @@
-
 body{
   margin: 0;
   height: 100vh;
@@ -14,7 +13,6 @@ header{
 .pawnSelector{
   width: 5%;
   height: 100%;
-
 }
 #greenPawn{
   background-color: green;
@@ -33,7 +31,6 @@ header{
   text-align: center;
   font-size: 30px;
 }
-
 #gameContainer{
   width: 100vw;
   height: 95vh;
@@ -45,7 +42,6 @@ header{
   width: 90vmin;
   height: 90vmin;
   background-color: lightblue;
-
 }
 .square{
   width: 33.33%;
@@ -54,20 +50,13 @@ header{
   position: relative;
   float: left;
 }
-/* .square:nth-child(2){
-   display: none;
-} */
 .squareContainer{
-  /* display: none; */
   border: 2px solid red;
   opacity:1;
   width: 100%;
   height: 100%;
   position: absolute;
 }
-/* .backOfTile:nth-child(5){
-  display:none;
-} */
 .backOfTile{
   background-image: url(images/tileBack.png);
   background-position: center;
@@ -103,28 +92,7 @@ header{
   text-align: center;
   padding-top: 10px;
 }
-.dwarf{
-  float: left;
-}
-
-.barbarian{
-  float: right;
-  width: 25%;
-  height: 45%;
-}
-
-/* .youWin > button {
-  display: none;
-  background-color: #008CBA;
-  font-size: 16px;
-  color: white;
-  padding: 2px;
-  position: absolute;
-  top: 50%;
-  left: 40%;
-} */
 .youLose {
-  /* display: none; */
   background-color: #fefefe;
   border: 2px solid black;
   color: red;
@@ -142,9 +110,7 @@ header{
   margin-top: 1vmin;
   color: black;
   font-size: 3vmin;
-
 }
-
 .hidden{
   display: none;
 }
