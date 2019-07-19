@@ -69,7 +69,7 @@ class Player {
 
       this.upandDownIndex = 3;
       this.leftandRightIndex = 2;
-      
+
       this.currentPosition = game.boardArray[this.largeSquareY][this.largeSquareX][this.upandDownIndex][this.leftandRightIndex].location;
       $(game.boardArray[this.largeSquareY][this.largeSquareX][this.upandDownIndex][this.leftandRightIndex].domElement.contents).append(this.player);
 
