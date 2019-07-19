@@ -82,9 +82,6 @@ class Player {
       console.log('you win!', this.winTheGame);
     }
   }
-  // unhideBackTile(){
-  //   if(this.currentposition == "")
-  // }
   movementUp() {
     this.upandDownIndex--;
 
@@ -96,19 +93,19 @@ class Player {
         return this.largeSquareY;
       }
       // if(this.largeSquareY == 0){
-        debugger;
       // this.nearestTile = $(this.doorChecker.up).closest("#gameBoard").find(".squareContainer:nth-child(2)")
-      $('.squareContainer:nth-child(2)').removeClass('backOfTile');
+      // $('.squareContainer').removeClass('backOfTile');
       // }
 
       this.upandDownIndex = 3;
       this.leftandRightIndex = 2;
-
+      console.log(game.boardArray[this.largeSquareY][this.largeSquareX].domElement.contents);
       this.currentPosition = game.boardArray[this.largeSquareY][this.largeSquareX][this.upandDownIndex][this.leftandRightIndex].location;
       $(game.boardArray[this.largeSquareY][this.largeSquareX][this.upandDownIndex][this.leftandRightIndex].domElement.contents).append(this.player);
 
       this.gameBoard = $(this.doorChecker.up).closest("#gameBoard").find(".square:nth-child(2) .pawn:nth-child(16) .pawnContainer");
       $(game.boardArray[this.largeSquareY][this.largeSquareX][this.upandDownIndex][this.leftandRightIndex].domElement.contents).addClass("door")
+      $(game.boardArray[this.largeSquareY][this.largeSquareX].domElement.contents).removeClass('backOfTile');
     }else if (this.upandDownIndex <= -1 && this.leftandRightIndex != 2){
       this.upandDownIndex++
       console.log("Didn't Move")
@@ -136,6 +133,7 @@ class Player {
 
       this.gameBoard = $(this.doorChecker.down).closest("#gameBoard").find(".square:nth-child(8) .pawn:nth-child(4) .pawnContainer");
       $(game.boardArray[this.largeSquareY][this.largeSquareX][this.upandDownIndex][this.leftandRightIndex].domElement.contents).addClass("door")
+      $(game.boardArray[this.largeSquareY][this.largeSquareX].domElement.contents).removeClass('backOfTile');
     } else if (this.upandDownIndex >= 4 && this.leftandRightIndex != 2) {
       this.upandDownIndex--;
       console.log("Didn't Move")
@@ -165,6 +163,7 @@ class Player {
 
       this.gameBoard = $(this.doorChecker.left).closest("#gameBoard").find(".square:nth-child(4) .pawn:nth-child(9) .pawnContainer");
       $(game.boardArray[this.largeSquareY][this.largeSquareX][this.upandDownIndex][this.leftandRightIndex].domElement.contents).addClass("door");
+      $(game.boardArray[this.largeSquareY][this.largeSquareX].domElement.contents).removeClass('backOfTile');
     } else if (this.leftandRightIndex <= -1 && this.upandDownIndex != 1) {
       this.leftandRightIndex++;
       console.log("Didn't Move")
@@ -195,8 +194,8 @@ class Player {
       $(game.boardArray[this.largeSquareY][this.largeSquareX][this.upandDownIndex][this.leftandRightIndex].domElement.contents).append(this.player);
 
       this.gameBoard = $(this.doorChecker.right).closest("#gameBoard").find(".square:nth-child(6) .pawn:nth-child(6) .pawnContainer");
-      // this.gameBoard = $(this.doorChecker.right).closest(".pawn .pawnContainer");
       $(game.boardArray[this.largeSquareY][this.largeSquareX][this.upandDownIndex][this.leftandRightIndex].domElement.contents).addClass("door");
+      $(game.boardArray[this.largeSquareY][this.largeSquareX].domElement.contents).removeClass('backOfTile');
     } else if (this.leftandRightIndex >= 4 && this.upandDownIndex !=1){
       this.leftandRightIndex--;
       console.log("Didn't Move")
