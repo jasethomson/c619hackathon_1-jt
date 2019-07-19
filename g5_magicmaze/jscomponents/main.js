@@ -19,7 +19,6 @@ function initializeApp() {
   var redItem1 = new RedItem1();
   var redItem2 = new RedItem2();
   var redExit = new RedExit();
-  $("#timerButton").on("click", startTimer);
 
   checkItem();
   var winningModal = new Modal();
@@ -27,14 +26,12 @@ function initializeApp() {
   winningModal.createLosingDiv();
   $(".youWin").addClass("hidden");
 }
-
 function changePlayer(event){
   if (newPlayer1.currentPlayer == "player1"){
     newPlayer2.currentPlayer = "player2";
   }else if(newPlayer2.currentPlayer == "player2")
   newPlayer1.currentPlayer = "player1"
 }
-
 function clickToUnhideCard(event) {
   var clickCurrentTile = $(event.target);
   $(clickCurrentTile).removeClass('backOfTile');
@@ -42,20 +39,5 @@ function clickToUnhideCard(event) {
 function checkItem (){
   if ($("div .item") == $("div .player  ")) {
     this.winCondition = true;
-    console.log('win condition', this.winCondition)
   }
 }
-function startTimer() {
-  var counter = 2;
-  var countDown = setInterval(function() {
-    counter--;
-    $("#timer").text(counter);
-    if (counter === 0) {
-      $(".youLose").removeClass("hidden");
-      clearInterval(countDown);
-      $("#timer").text("Time's Up!");
-    }
-  }, 500);
-  console.log("timer started")
-}
-
