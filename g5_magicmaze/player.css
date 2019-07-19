@@ -1,11 +1,9 @@
 .player{
-  border-radius: 25px;
-  height: 5vh;
-  width: 5vw;
+  border-radius: 50%;
+  height: 90%;
+  width: 90%;
   z-index: 5;
-  margin-top: 1vh;
-  margin-right: auto;
-  margin-left: auto;
+  margin: auto;
 }
 .item {
   height: 100%;
@@ -37,5 +35,5 @@
   margin:auto;
   background-position: center;
   background-size: cover;
-  background-color: orangered;
+  background-color: burlywood;
 }

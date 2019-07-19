@@ -51,7 +51,7 @@ class Player {
     }
   }
   getToExit() {
-    if (this.currentPosition == game.boardArray[2][1][3][3].location && $("#timer").text() > 1) {
+    if (this.currentPosition == game.boardArray[2][1][3][3].location && $("#timer").text() > 1 && this.stolenItem1 == true && this.stolenItem2 == true) {
       this.winTheGame = true;
       $(".youWin").removeClass('hidden');
     }
@@ -69,7 +69,7 @@ class Player {
 
       this.upandDownIndex = 3;
       this.leftandRightIndex = 2;
-      
+
       this.currentPosition = game.boardArray[this.largeSquareY][this.largeSquareX][this.upandDownIndex][this.leftandRightIndex].location;
       $(game.boardArray[this.largeSquareY][this.largeSquareX][this.upandDownIndex][this.leftandRightIndex].domElement.contents).append(this.player);
 
