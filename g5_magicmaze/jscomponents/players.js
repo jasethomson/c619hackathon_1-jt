@@ -29,22 +29,24 @@ class Player {
     this.currentPosition = game.boardArray[this.largeSquareY][this.largeSquareX][this.upandDownIndex][this.leftandRightIndex].location;
     $("#timerButton").on("click", this.startTimer);
     window.addEventListener('keydown', function (event) {
-
-      switch (event.keyCode) {
-        case 37:
-          this.movementLeft();
-          break;
-        case 38:
-          this.movementUp();
-          break;
-        case 39:
-          this.movementRight();
-          break;
-        case 40:
-          this.movementDown();
-          break;
+      if (this.winTheGame===false){
+        switch (event.keyCode) {
+          case 37:
+            this.movementLeft();
+            break;
+          case 38:
+            this.movementUp();
+            break;
+          case 39:
+            this.movementRight();
+            break;
+          case 40:
+            this.movementDown();
+            break;
+        }
       }
     }.bind(this));
+
   }
   stealItem () {
     if (this.currentPosition === game.boardArray[0][0][0][0].location){
@@ -64,9 +66,14 @@ class Player {
     if (this.currentPosition === game.boardArray[2][1][3][3].location && $("#timer").text() > 1 && this.stolenItem1 == true && this.stolenItem2 == true) {
       this.winTheGame = true;
       $(".youWin").removeClass('hidden');
+
     }
   }
   movementUp() {
+
+
+
+
     this.upandDownIndex--;
 
     if (this.upandDownIndex <= -1 && this.leftandRightIndex == 2){
