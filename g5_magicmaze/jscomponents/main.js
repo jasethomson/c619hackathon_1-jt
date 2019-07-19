@@ -2,6 +2,10 @@ $(document).ready(initializeApp);
 
 var game = null;
 var currentPlayer = $(".player1");
+var randomItemLittleIndexX = Math.round(Math.random() * 3);
+var randomItemBigIndexX = Math.round(Math.random() * 2);
+var randomItemLittleIndexY = Math.round(Math.random() * 3);
+var randomItemBigIndexY = Math.round(Math.random() * 2);
 function initializeApp() {
   $('.backOfTile').removeClass();
   var tileConfig = {
@@ -14,9 +18,11 @@ function initializeApp() {
   }
   game = new MagicMaze(tileConfig, squareConfig);
   game.makeGameBoard();
-  var newPlayer1 = new Player("red", 1, 1);
-  var redItem1 = new RedItem1();
-  var redItem2 = new RedItem2();
+//   $('#gameContainer').on('click', clickToUnhideCard);
+  var newPlayer1 = new Player("red", 1, 1, "player1",randomItemBigIndexY, randomItemBigIndexX, randomItemLittleIndexY, randomItemLittleIndexX);
+  var redItem1 = new RedItem1(randomItemBigIndexY, randomItemBigIndexX, randomItemLittleIndexY, randomItemLittleIndexX);
+  var redItem2 = new RedItem1(randomItemBigIndexX, randomItemBigIndexY, randomItemLittleIndexX, randomItemLittleIndexY);
+
   var redExit = new RedExit();
 
   checkItem();
