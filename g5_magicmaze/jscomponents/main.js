@@ -44,9 +44,8 @@ function initializeApp() {
     randomItemBigIndexY = 0;
   }
   var newPlayer1 = new Player("red", 1, 1, "player1", randomItemBigIndexY, randomItemBigIndexX, randomItemLittleIndexY, randomItemLittleIndexX, randomExitY, randomExitX, randomExity, randomExitx);
-  var redItem1 = new RedItem1(randomItemBigIndexY, randomItemBigIndexX, randomItemLittleIndexY, randomItemLittleIndexX);
-  var redItem2 = new RedItem1(randomItemBigIndexX, randomItemBigIndexY, randomItemLittleIndexX, randomItemLittleIndexY);
-
+  var redItem1 = new RedItem1(randomItemBigIndexY, randomItemBigIndexX, randomItemLittleIndexY, randomItemLittleIndexX, 1);
+  var redItem2 = new RedItem1(randomItemBigIndexX, randomItemBigIndexY, randomItemLittleIndexX, randomItemLittleIndexY, 2);
   var redExit = new RedExit(randomExitY, randomExitX, randomExity, randomExitx);
 
 

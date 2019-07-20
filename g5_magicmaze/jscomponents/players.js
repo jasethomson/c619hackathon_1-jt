@@ -20,8 +20,8 @@ class Player {
     this.rightIndex = 1;
     this.stolenItem1 = false;
     this.stolenItem2 = false;
-    // this.item1 = redItem1;
-    // this.item2 = redItem2;
+    this.item1 = $(".redItem1")
+    this.item2 = $(".redItem2")
     this.retrieveItem1 = $("#firstItemContainer");
     this.retrieveItem2 = $("#secondItemContainer")
     this.winTheGame = false;
@@ -94,13 +94,13 @@ class Player {
       this.stolenItem1 = true;
       console.log("the stolen item1 was picked up", this.stolenItem1);
       this.retrieveItem1.addClass("retrieveItem");
-      // this.item1.addClass("hidden");
+      $(".item").removeClass("redItem1");
     }
     if (this.currentPosition == game.boardArray[this.randomItemBigIndexX][this.randomItemBigIndexY][this.randomItemLittleIndexX][this.randomItemLittleIndexY].location) {
       this.stolenItem2 = true;
       console.log("the stolen item2 was picked up", this.stolenItem2);
-      this.retreiveItem2.addClass("retrieveItem");
-      // this.item2.addClass("hidden");
+      this.retrieveItem2.addClass("retrieveItem");
+      $(".item").removeClass("redItem2");
     }
     if (this.currentPosition === game.boardArray[this.randomExitY][this.randomExitX][this.randomExity][this.randomExitx].location && $("#timer").text() > 1 && this.stolenItem1 == true && this.stolenItem2 == true) {
       this.winTheGame = true;
@@ -137,13 +137,13 @@ class Player {
       this.stolenItem1 = true;
       console.log("the stolen item1 was picked up", this.stolenItem1);
       this.retrieveItem1.addClass("retrieveItem");
-      // this.item1.addClass("hidden");
+      $(".item").removeClass("redItem1");
     }
     if (this.currentPosition == game.boardArray[this.randomItemBigIndexX][this.randomItemBigIndexY][this.randomItemLittleIndexX][this.randomItemLittleIndexY].location) {
       this.stolenItem2 = true;
       console.log("the stolen item2 was picked up", this.stolenItem2);
-      this.retreiveItem2.addClass("retrieveItem");
-      // this.item2.addClass("hidden");
+      this.retrieveItem2.addClass("retrieveItem");
+      $(".item").removeClass("redItem2");
     }
     if (this.currentPosition === game.boardArray[this.randomExitY][this.randomExitX][this.randomExity][this.randomExitx].location && $("#timer").text() > 1 && this.stolenItem1 == true && this.stolenItem2 == true) {
       this.winTheGame = true;
@@ -180,13 +180,13 @@ class Player {
       this.stolenItem1 = true;
       console.log("the stolen1 item was picked up", this.stolenItem1);
       this.retrieveItem1.addClass("retrieveItem");
-      // this.item1.addClass("hidden");
+      $(".item").removeClass("redItem1");
     }
     if (this.currentPosition == game.boardArray[this.randomItemBigIndexX][this.randomItemBigIndexY][this.randomItemLittleIndexX][this.randomItemLittleIndexY].location) {
       this.stolenItem2 = true;
       console.log("the stolen item2 was picked up", this.stolenItem2);
-      this.retreiveItem2.addClass("retrieveItem");
-      // this.item2.addClass("hidden");
+      this.retrieveItem2.addClass("retrieveItem");
+      $(".item").removeClass("redItem2");
     }
     if (this.currentPosition === game.boardArray[this.randomExitY][this.randomExitX][this.randomExity][this.randomExitx].location && $("#timer").text() > 1 && this.stolenItem1 == true && this.stolenItem2 == true) {
       this.winTheGame = true;
@@ -223,13 +223,13 @@ class Player {
       this.stolenItem1 = true;
       console.log("the stolen1 item was picked up", this.stolenItem1);
       this.retrieveItem1.addClass("retrieveItem");
-      // this.item1.addClass("hidden");
+      $(".item").removeClass("redItem1");
     }
     if (this.currentPosition == game.boardArray[this.randomItemBigIndexX][this.randomItemBigIndexY][this.randomItemLittleIndexX][this.randomItemLittleIndexY].location) {
       this.stolenItem2 = true;
       console.log("the stolen item2 was picked up", this.stolenItem2);
-      this.retreiveItem2.addClass("retrieveItem");
-      // this.item2.addClass("hidden");
+      this.retrieveItem2.addClass("retrieveItem");
+      $(".item").removeClass("redItem2");
     }
     if (this.currentPosition === game.boardArray[this.randomExitY][this.randomExitX][this.randomExity][this.randomExitx].location && $("#timer").text() > 1 && this.stolenItem1 == true && this.stolenItem2 == true) {
       this.winTheGame = true;
@@ -253,23 +253,10 @@ startTimer() {
 
 }
 class RedItem1 {
-  constructor(BigY, BigX, LittleY, LittleX) {
-    this.item1 = false;
+  constructor(BigY, BigX, LittleY, LittleX, redItemNum) {
     this.item = $(game.boardArray[BigY][BigX][LittleY][LittleX].domElement.contents);
-    // this.item = $(game.boardArray[0][0][0][0].domElement.contents);
-
-
-
-    this.item.addClass("item redItem1");
-    // if (this.item1 === false){
-    //   this.item.addClass("item redItem1");
-    //   this.item1 = true;
-    // } else {
-    //   this.item.addClass("item redItem2");
-    // }
-
+    this.item.addClass("item redItem"+redItemNum);
   }
-
 }
 class RedExit {
   constructor(BigY, BigX, LittleY, LittleX) {
