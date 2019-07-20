@@ -27,6 +27,7 @@ class Modal {
         $(".youWin").addClass("hidden");
         clearInterval(winCountDown);
         $(".winReset").text("");
+        document.location.reload(true);
         return;
       }
     }, 1000)
@@ -58,6 +59,7 @@ class Modal {
         $(".youLose").addClass("hidden");
         clearInterval(losingCountDown);
         $(".loseReset").text("");
+        document.location.reload(true);
         return;
       }
     }, 1000)

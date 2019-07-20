@@ -242,7 +242,8 @@ class Player {
   }
 
 startTimer() {
-  var counter = 3;
+  var counter = 15;
+
   var countDown = setInterval(function() {
     counter--;
     $("#timer").text(counter);
