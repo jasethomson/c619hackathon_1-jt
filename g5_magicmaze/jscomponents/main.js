@@ -11,7 +11,7 @@ var randomExitY = Math.round(Math.random() * 2);
 var randomExitx = Math.round(Math.random() * 3);
 var randomExity = Math.round(Math.random() * 3);
 function initializeApp() {
-  $('.backOfTile').removeClass();
+  // $('.backOfTile').removeClass();
   var tileConfig = {
     height: 3,
     width: 3,
@@ -54,6 +54,7 @@ function initializeApp() {
   winningModal.createWinningDiv();
   winningModal.createLosingDiv();
   $(".youWin").addClass("hidden");
+  // $("#timer").text("You won!");
 }
 function changePlayer(event){
   if (newPlayer1.currentPlayer == "player1"){

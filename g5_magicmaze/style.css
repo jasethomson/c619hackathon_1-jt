@@ -29,7 +29,9 @@ header{
 #timer{
   width: 10%;
   height: 100%;
-  padding: 1vh
+  padding: 1vh;
+  border: solid 1px black;
+  margin-left: 1%;
 }
 #title{
   width: 60%;

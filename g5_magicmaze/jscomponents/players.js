@@ -26,6 +26,7 @@ class Player {
     this.retrieveItem1 = $("#firstItemContainer");
     this.retrieveItem2 = $("#secondItemContainer")
     this.winTheGame = false;
+    this.startTimer = this.startTimer.bind(this);
     this.doorChecker = {
       up: $(game.boardArray[this.largeSquareY][this.largeSquareX][0][2].domElement.contents).addClass("door zdex"),
       down: $(game.boardArray[this.largeSquareY][this.largeSquareX][3][2].domElement.contents).addClass("door zdex"),
@@ -239,17 +240,35 @@ class Player {
     }
     return this.currentPosition;
   }
+
+  /* timer countdown
+  if clock hits 0 && (stolenItem1 === false || stolenItem2 == false)
+    display losingModal via:
+    losingModal.(removeClass("hidden"))
+    clearInterval(countDown);
+    $("#timer").text("Time's Up!");
+  else if ()stolenItem1 === true && stolenItem2 === true && clock > 0)
+    display winningModal via:
+    winninggModal.(removeClass("hidden"))
+    clearInterval(countDown);
+    $("#timer").text("You've Won"); */
+
 startTimer() {
-  var counter = 29;
+  var counter = 2;
   var countDown = setInterval(function() {
     counter--;
     $("#timer").text(counter);
     if (counter === 0) {
-      $(".youLose").removeClass("hidden");
+        $(".youLose").removeClass("hidden");
+        clearInterval(countDown);
+        $("#timer").text("Time's Up!");
+    } else if (this.stolenItem1 === true && this.stolenItem2 === true && counter > 0 && this.currentPosition === game.boardArray[this.randomExitY][this.randomExitX][this.randomExity][this.randomExitx].location) {
+      $(".youWin").removeClass("hidden");
       clearInterval(countDown);
-      $("#timer").text("Time's Up!");
+      $("#timer").text("");
+      $("#timer").addClass("winning");
     }
-  }, 1000);
+  }.bind(this), 1000);
 }
 
 }
