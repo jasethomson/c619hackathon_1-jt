@@ -20,15 +20,9 @@ var squareConfig = {
 }
 function initializeApp() {
   // $('.backOfTile').removeClass();
-  // var tileConfig = {
-  //   height: 3,
-  //   width: 3,
-  // }
-  // var squareConfig = {
-  //   height: 4,
-  //   width: 4
-  // }
+
   // game = new MakeGame();
+
   game = new MagicMaze(tileConfig, squareConfig);
   game.makeGameBoard();
   // game.makeGameBoard();
@@ -64,6 +58,7 @@ function initializeApp() {
   winningModal.createWinningDiv();
   winningModal.createLosingDiv();
   $(".youWin").addClass("hidden");
+  // $("#timer").text("You won!");
 }
 // function changePlayer(event){
 //   if (newPlayer1.currentPlayer == "player1"){

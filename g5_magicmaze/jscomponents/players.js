@@ -27,6 +27,7 @@ class Player {
     this.retrieveItem1 = $("#firstItemContainer");
     this.retrieveItem2 = $("#secondItemContainer")
     this.winTheGame = false;
+    this.startTimer = this.startTimer.bind(this);
     this.doorChecker = {
       up: $(game.boardArray[this.largeSquareY][this.largeSquareX][0][2].domElement.contents).addClass("door zdex"),
       down: $(game.boardArray[this.largeSquareY][this.largeSquareX][3][2].domElement.contents).addClass("door zdex"),
@@ -239,19 +240,25 @@ class Player {
     }
     return this.currentPosition;
   }
-// startTimer() {
-//   var counter = 29;
-//   var countDown = setInterval(function() {
-//     counter--;
-//     $("#timer").text(counter);
-//     if (counter === 0) {
-//       $(".youLose").removeClass("hidden");
-//       clearInterval(countDown);
-//       $("#timer").text("Time's Up!");
-//     }
-//   }, 1000);
-// }
 
+startTimer() {
+  var counter = 2;
+  var countDown = setInterval(function() {
+    counter--;
+    $("#timer").text(counter);
+    if (counter === 0) {
+        $(".youLose").removeClass("hidden");
+        clearInterval(countDown);
+        $("#timer").text("Time's Up!");
+    } else if (this.stolenItem1 === true && this.stolenItem2 === true && counter > 0 && this.currentPosition === game.boardArray[this.randomExitY][this.randomExitX][this.randomExity][this.randomExitx].location) {
+      $(".youWin").removeClass("hidden");
+      clearInterval(countDown);
+      $("#timer").text("");
+      $("#timer").addClass("winning");
+    }
+  }.bind(this), 1000);
+}
+  
 }
 class RedItem1 {
   constructor(BigY, BigX, LittleY, LittleX, redItemNum) {
