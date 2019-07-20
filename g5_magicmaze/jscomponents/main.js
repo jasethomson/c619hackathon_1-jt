@@ -49,6 +49,7 @@ function initializeApp() {
 
   var redExit = new RedExit(randomExitY, randomExitX, randomExity, randomExitx);
 
+
   checkItem();
   var winningModal = new Modal();
   winningModal.createWinningDiv();
