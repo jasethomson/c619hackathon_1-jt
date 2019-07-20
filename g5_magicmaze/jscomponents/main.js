@@ -22,7 +22,6 @@ function initializeApp() {
   var newPlayer1 = new Player("red", 1, 1, "player1",randomItemBigIndexY, randomItemBigIndexX, randomItemLittleIndexY, randomItemLittleIndexX);
   var redItem1 = new RedItem1(randomItemBigIndexY, randomItemBigIndexX, randomItemLittleIndexY, randomItemLittleIndexX);
   var redItem2 = new RedItem1(randomItemBigIndexX, randomItemBigIndexY, randomItemLittleIndexX, randomItemLittleIndexY);
-
   var redExit = new RedExit();
 
   checkItem();
