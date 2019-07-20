@@ -36,3 +36,8 @@
   background-size: cover;
   background-color: burlywood;
 }
+.winning{
+  background-image: url("./images/winning1.gif");
+  background-position: center;
+  background-size: cover;
+}
