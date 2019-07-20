@@ -13,7 +13,7 @@ class Modal {
   $('body').append(winningDiv);
 
   var winPlayAgainDiv = $("<div>");
-  winPlayAgainDiv.addClass("loseReset");
+  winPlayAgainDiv.addClass("winReset");
   winningDiv.append(winPlayAgainDiv);
   $(".replayGameAfterLoss").on("click", this.winningTimer);
   }

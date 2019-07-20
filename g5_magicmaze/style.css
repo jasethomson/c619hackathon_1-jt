@@ -119,6 +119,11 @@ header{
   color: black;
   font-size: 3vmin;
 }
+.youWin > .winReset{
+  margin-top: 1vmin;
+  color: black;
+  font-size: 3vmin;
+}
 .hidden{
   display: none;
 }
