@@ -21,12 +21,13 @@ class Modal {
     $(".winReset").removeClass("hidden")
     var winCounter = 4;
     var winCountDown = setInterval(function () {
-      losingCounter--;
+      winCounter--;
       $(".winReset").text("Game starting in " + winCounter)
       if (winCounter === 0) {
         $(".youWin").addClass("hidden");
         clearInterval(winCountDown);
         $(".winReset").text("");
+        document.location.reload(true);
         return;
       }
     }, 1000)
@@ -58,6 +59,7 @@ class Modal {
         $(".youLose").addClass("hidden");
         clearInterval(losingCountDown);
         $(".loseReset").text("");
+        document.location.reload(true);
         return;
       }
     }, 1000)

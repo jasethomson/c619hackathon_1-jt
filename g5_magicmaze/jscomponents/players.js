@@ -242,7 +242,7 @@ class Player {
   }
 
 startTimer() {
-  var counter = 2;
+  var counter = 15;
   var countDown = setInterval(function() {
     counter--;
     $("#timer").text(counter);
@@ -258,7 +258,7 @@ startTimer() {
     }
   }.bind(this), 1000);
 }
-  
+
 }
 class RedItem1 {
   constructor(BigY, BigX, LittleY, LittleX, redItemNum) {
