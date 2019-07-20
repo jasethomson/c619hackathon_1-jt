@@ -39,7 +39,8 @@ class Player {
     this.currentContents = game.boardArray[this.largeSquareY][this.largeSquareX][this.upandDownIndex][this.leftandRightIndex]
     this.currentPosition = game.boardArray[this.largeSquareY][this.largeSquareX][this.upandDownIndex][this.leftandRightIndex].location;
     $("#timerButton").on("click", this.startTimer);
-    window.addEventListener('keydown', this.movementAll)
+
+    // window.addEventListener('keydown', this.movementAll)
 
   }
   // getToExit() {
@@ -243,6 +244,7 @@ class Player {
 
 startTimer() {
   var counter = 15;
+  window.addEventListener('keydown', this.movementAll)
 
   var countDown = setInterval(function() {
     counter--;
