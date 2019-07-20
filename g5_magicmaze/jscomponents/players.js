@@ -252,7 +252,8 @@ startTimer() {
     if (counter === 0) {
         $(".youLose").removeClass("hidden");
         clearInterval(countDown);
-        $("#timer").text("Time's Up!");
+        $("#timer").text("");
+        $("#timer").addClass("losing");
     } else if (this.stolenItem1 === true && this.stolenItem2 === true && counter > 0 && this.currentPosition === game.boardArray[this.randomExitY][this.randomExitX][this.randomExity][this.randomExitx].location) {
       $(".youWin").removeClass("hidden");
       clearInterval(countDown);
