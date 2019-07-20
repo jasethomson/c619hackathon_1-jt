@@ -1,3 +1,6 @@
+.zdex{
+  z-index: 5;
+}
 .player{
   border-radius: 50%;
   height: 90%;

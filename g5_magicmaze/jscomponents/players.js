@@ -2,6 +2,7 @@
 class Player {
   constructor( color, positionX , positionY , player, BigY, BigX, LittleY, LittleX, ExitY, ExitX, Exity, Exitx) {
     this.player = $("<div>").addClass("player", player);
+    this.player.addClass("zdex");
     this.player.css("background-color", color);
     this.randomItemLittleIndexX = LittleX;
     this.randomItemBigIndexX = BigX;
