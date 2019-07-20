@@ -1,7 +1,7 @@
 $(document).ready(initializeApp);
 
 var game = null;
-var currentPlayer = $(".player1");
+// var currentPlayer = $(".player1");
 var randomItemLittleIndexX = Math.round(Math.random() * 3);
 var randomItemBigIndexX = Math.round(Math.random() * 2);
 var randomItemLittleIndexY = Math.round(Math.random() * 3);
@@ -10,19 +10,23 @@ var randomExitX = Math.round(Math.random() * 2);
 var randomExitY = Math.round(Math.random() * 2);
 var randomExitx = Math.round(Math.random() * 3);
 var randomExity = Math.round(Math.random() * 3);
+var tileConfig = {
+  height: 3,
+  width: 3,
+}
+var squareConfig = {
+  height: 4,
+  width: 4
+}
 function initializeApp() {
   // $('.backOfTile').removeClass();
-  var tileConfig = {
-    height: 3,
-    width: 3,
-  }
-  var squareConfig = {
-    height: 4,
-    width: 4
-  }
+
+  // game = new MakeGame();
+
   game = new MagicMaze(tileConfig, squareConfig);
   game.makeGameBoard();
-//   $('#gameContainer').on('click', clickToUnhideCard);
+  // game.makeGameBoard();
+  // $('#gameContainer').on('click', clickToUnhideCard);
   if (randomItemBigIndexX == randomItemBigIndexY && randomItemLittleIndexX == randomItemLittleIndexY){
     randomItemBigIndexX = Math.round(Math.random()*2);
     randomItemLittleIndexX = Math.round(Math.random()*3);
@@ -56,12 +60,12 @@ function initializeApp() {
   $(".youWin").addClass("hidden");
   // $("#timer").text("You won!");
 }
-function changePlayer(event){
-  if (newPlayer1.currentPlayer == "player1"){
-    newPlayer2.currentPlayer = "player2";
-  }else if(newPlayer2.currentPlayer == "player2")
-  newPlayer1.currentPlayer = "player1"
-}
+// function changePlayer(event){
+//   if (newPlayer1.currentPlayer == "player1"){
+//     newPlayer2.currentPlayer = "player2";
+//   }else if(newPlayer2.currentPlayer == "player2")
+//   newPlayer1.currentPlayer = "player1"
+// }
 
 function checkItem (){
   if ($("div .item") == $("div .player  ")) {

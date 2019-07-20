@@ -13,6 +13,7 @@ class Player {
     this.randomExitY = ExitY;
     this.randomExitx = Exitx;
     this.randomExity = Exity
+
     this.largeSquareX = 1;
     this.largeSquareY = 1;
     this.upandDownIndex = positionY;
@@ -33,29 +34,12 @@ class Player {
       left: $(game.boardArray[this.largeSquareY][this.largeSquareX][1][0].domElement.contents).addClass("door zdex"),
       right: $(game.boardArray[this.largeSquareY][this.largeSquareX][1][3].domElement.contents).addClass("door zdex")
     }
-
+    this.movementAll = this.movementAll.bind(this);
     $(game.boardArray[this.largeSquareY][this.largeSquareX][positionY][positionX].domElement.contents).append(this.player);
     this.currentContents = game.boardArray[this.largeSquareY][this.largeSquareX][this.upandDownIndex][this.leftandRightIndex]
     this.currentPosition = game.boardArray[this.largeSquareY][this.largeSquareX][this.upandDownIndex][this.leftandRightIndex].location;
     $("#timerButton").on("click", this.startTimer);
-    window.addEventListener('keydown', function (event) {
-      if (this.winTheGame===false){
-        switch (event.keyCode) {
-          case 37:
-            this.movementLeft();
-            break;
-          case 38:
-            this.movementUp();
-            break;
-          case 39:
-            this.movementRight();
-            break;
-          case 40:
-            this.movementDown();
-            break;
-        }
-      }
-    }.bind(this));
+    window.addEventListener('keydown', this.movementAll)
 
   }
   // getToExit() {
@@ -65,10 +49,27 @@ class Player {
 
   //   }
   // }
+  movementAll(event) {
+    if (this.winTheGame === false) {
+      switch (event.keyCode) {
+        case 37:
+          this.movementLeft();
+          break;
+        case 38:
+          this.movementUp();
+          break;
+        case 39:
+          this.movementRight();
+          break;
+        case 40:
+          this.movementDown();
+          break;
+      }
+    }
+  }
   movementUp() {
 
     this.upandDownIndex--;
-
     if (this.upandDownIndex <= -1 && this.leftandRightIndex == 2){
       this.largeSquareY--;
       if (this.largeSquareY <= -1) {
@@ -76,10 +77,8 @@ class Player {
         ++this.upandDownIndex
         return this.largeSquareY;
       }
-
       this.upandDownIndex = 3;
       this.leftandRightIndex = 2;
-
       this.currentPosition = game.boardArray[this.largeSquareY][this.largeSquareX][this.upandDownIndex][this.leftandRightIndex].location;
       $(game.boardArray[this.largeSquareY][this.largeSquareX][this.upandDownIndex][this.leftandRightIndex].domElement.contents).append(this.player);
 
@@ -89,6 +88,7 @@ class Player {
     }else if (this.upandDownIndex <= -1 && this.leftandRightIndex != 2){
       this.upandDownIndex++
     }else{
+      this.currentPosition = game.boardArray[this.largeSquareY][this.largeSquareX][this.upandDownIndex][this.leftandRightIndex].location
       $(game.boardArray[this.largeSquareY][this.largeSquareX][this.upandDownIndex][this.leftandRightIndex].domElement.contents).append(this.player);
     }
     // this.stealItem();
@@ -241,18 +241,6 @@ class Player {
     return this.currentPosition;
   }
 
-  /* timer countdown
-  if clock hits 0 && (stolenItem1 === false || stolenItem2 == false)
-    display losingModal via:
-    losingModal.(removeClass("hidden"))
-    clearInterval(countDown);
-    $("#timer").text("Time's Up!");
-  else if ()stolenItem1 === true && stolenItem2 === true && clock > 0)
-    display winningModal via:
-    winninggModal.(removeClass("hidden"))
-    clearInterval(countDown);
-    $("#timer").text("You've Won"); */
-
 startTimer() {
   var counter = 2;
   var countDown = setInterval(function() {
@@ -270,7 +258,7 @@ startTimer() {
     }
   }.bind(this), 1000);
 }
-
+  
 }
 class RedItem1 {
   constructor(BigY, BigX, LittleY, LittleX, redItemNum) {
