@@ -242,7 +242,7 @@ class Player {
   }
 
 startTimer() {
-  var counter = 15;
+  var counter = 30;
 
   var countDown = setInterval(function() {
     counter--;
