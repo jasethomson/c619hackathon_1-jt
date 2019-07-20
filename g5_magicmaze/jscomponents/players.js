@@ -27,10 +27,10 @@ class Player {
     this.retrieveItem2 = $("#secondItemContainer")
     this.winTheGame = false;
     this.doorChecker = {
-      up: $(game.boardArray[this.largeSquareY][this.largeSquareX][0][2].domElement.contents).addClass("door"),
-      down: $(game.boardArray[this.largeSquareY][this.largeSquareX][3][2].domElement.contents).addClass("door"),
-      left: $(game.boardArray[this.largeSquareY][this.largeSquareX][1][0].domElement.contents).addClass("door"),
-      right: $(game.boardArray[this.largeSquareY][this.largeSquareX][1][3].domElement.contents).addClass("door")
+      up: $(game.boardArray[this.largeSquareY][this.largeSquareX][0][2].domElement.contents).addClass("door zdex"),
+      down: $(game.boardArray[this.largeSquareY][this.largeSquareX][3][2].domElement.contents).addClass("door zdex"),
+      left: $(game.boardArray[this.largeSquareY][this.largeSquareX][1][0].domElement.contents).addClass("door zdex"),
+      right: $(game.boardArray[this.largeSquareY][this.largeSquareX][1][3].domElement.contents).addClass("door zdex")
     }
 
     $(game.boardArray[this.largeSquareY][this.largeSquareX][positionY][positionX].domElement.contents).append(this.player);
@@ -256,12 +256,12 @@ startTimer() {
 class RedItem1 {
   constructor(BigY, BigX, LittleY, LittleX, redItemNum) {
     this.item = $(game.boardArray[BigY][BigX][LittleY][LittleX].domElement.contents);
-    this.item.addClass("item redItem"+redItemNum);
+    this.item.addClass("item zdex redItem"+redItemNum);
   }
 }
 class RedExit {
   constructor(BigY, BigX, LittleY, LittleX) {
     this.exit = $(game.boardArray[BigY][BigX][LittleY][LittleX].domElement.contents);
-    this.exit.addClass("exit redExit");
+    this.exit.addClass("exit zdex redExit");
   }
 }
