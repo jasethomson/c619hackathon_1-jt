@@ -45,7 +45,7 @@ class MakeGame {
     // var redItem2 = new RedItem1(this.randomItemBigIndexX, this.randomItemBigIndexY, this.randomItemLittleIndexX, this.randomItemLittleIndexY, 2);
     // var redExit = new RedExit(this.randomExitY, this.randomExitX, this.randomExity, this.randomExitx);
     // window.addEventListener('keydown', this.movementAll);
-    $('#timerButton').on("click", this.startTimer);
+    // $('#timerButton').on("click", this.startTimer);
   }
   // changePlayer(event) {
   //   if (this.currentPlayer == "player1") {
@@ -53,16 +53,5 @@ class MakeGame {
   //   } else if (this.currentPlayer == "player2")
   //     this.currentPlayer = "player1"
   // }
-  startTimer() {
-    var counter = 29;
-    var countDown = setInterval(function () {
-      counter--;
-      $("#timer").text(counter);
-      if (counter === 0) {
-        $(".youLose").removeClass("hidden");
-        clearInterval(countDown);
-        $("#timer").text("Time's Up!");
-      }
-    }, 1000);
-  }
+
 }
