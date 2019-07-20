@@ -13,7 +13,7 @@ class Modal {
   $('body').append(winningDiv);
 
   var winPlayAgainDiv = $("<div>");
-  winPlayAgainDiv.addClass("loseReset");
+  winPlayAgainDiv.addClass("winReset");
   winningDiv.append(winPlayAgainDiv);
   $(".replayGameAfterLoss").on("click", this.winningTimer);
   }
@@ -21,7 +21,7 @@ class Modal {
     $(".winReset").removeClass("hidden")
     var winCounter = 4;
     var winCountDown = setInterval(function () {
-      losingCounter--;
+      winCounter--;
       $(".winReset").text("Game starting in " + winCounter)
       if (winCounter === 0) {
         $(".youWin").addClass("hidden");
