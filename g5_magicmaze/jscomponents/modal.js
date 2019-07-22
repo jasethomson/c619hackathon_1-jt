@@ -9,6 +9,7 @@ class Modal {
   var winPlayAgain = $('<button>');
   winPlayAgain.text("Play again?");
   winPlayAgain.addClass("replayGameAfterLoss")
+  winPlayAgain.attr("onclick", "this.disabled=true");
   winningDiv.append(winPlayAgain);
   $('body').append(winningDiv);
 
@@ -40,6 +41,7 @@ class Modal {
     var losePlayAgain = $('<button>');
     losePlayAgain.text('Play again?');
     losePlayAgain.addClass("replayGameAfterLoss")
+    losePlayAgain.attr("onclick", "this.disabled=true")
     losingDiv.append(losePlayAgain);
     $('body').append(losingDiv);
 
