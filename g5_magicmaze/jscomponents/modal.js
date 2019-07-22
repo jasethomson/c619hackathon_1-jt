@@ -3,7 +3,7 @@ class Modal {
   }
   createWinningDiv(){
   var winningDiv = $('<div>');
-  winningDiv.text("You won!!!")
+  winningDiv.text("You won!!!").append("<br>");
   winningDiv.addClass("youWin hidden");
 
   var winPlayAgain = $('<button>');
@@ -35,7 +35,7 @@ class Modal {
   }
   createLosingDiv() {
     var losingDiv = $('<div>');
-    losingDiv.text("You lost!!!")
+    losingDiv.text("You lost!!!").append("<br>");
     losingDiv.addClass("youLose hidden");
 
     var losePlayAgain = $('<button>');
