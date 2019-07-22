@@ -38,7 +38,13 @@ class Player {
     $(game.boardArray[this.largeSquareY][this.largeSquareX][positionY][positionX].domElement.contents).append(this.player);
     this.currentContents = game.boardArray[this.largeSquareY][this.largeSquareX][this.upandDownIndex][this.leftandRightIndex]
     this.currentPosition = game.boardArray[this.largeSquareY][this.largeSquareX][this.upandDownIndex][this.leftandRightIndex].location;
-    $("#timerButton").on("click", this.startTimer);
+
+    // $("#timerButton").on("click", function() {
+    //   $(this).attr("disabled", "disabled");
+    //   this.startTimer;
+    // });
+
+    $("#timerButton").on("click", this.startTimer)
 
     // window.addEventListener('keydown', this.movementAll)
 
