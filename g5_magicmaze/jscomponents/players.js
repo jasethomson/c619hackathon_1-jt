@@ -243,7 +243,7 @@ class Player {
   }
 
 startTimer() {
-  var counter = 15;
+  var counter = 30;
   window.addEventListener('keydown', this.movementAll)
 
   var countDown = setInterval(function() {
