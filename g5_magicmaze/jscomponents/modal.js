@@ -5,14 +5,12 @@ class Modal {
   var winningDiv = $('<div>');
   winningDiv.text("You won!!!").append("<br>");
   winningDiv.addClass("youWin hidden");
-
   var winPlayAgain = $('<button>');
   winPlayAgain.text("Play again?");
   winPlayAgain.addClass("replayGameAfterLoss")
   winPlayAgain.attr("onclick", "this.disabled=true");
   winningDiv.append(winPlayAgain);
   $('body').append(winningDiv);
-
   var winPlayAgainDiv = $("<div>");
   winPlayAgainDiv.addClass("winReset");
   winningDiv.append(winPlayAgainDiv);
@@ -37,15 +35,12 @@ class Modal {
     var losingDiv = $('<div>');
     losingDiv.text("You lost!!!").append("<br>");
     losingDiv.addClass("youLose hidden");
-
     var losePlayAgain = $('<button>');
     losePlayAgain.text('Play again?');
     losePlayAgain.addClass("replayGameAfterLoss")
     losePlayAgain.attr("onclick", "this.disabled=true")
     losingDiv.append(losePlayAgain);
     $('body').append(losingDiv);
-
-
     var losePlayAgainDiv = $("<div>")
     losePlayAgainDiv.addClass("loseReset")
     losingDiv.append(losePlayAgainDiv);
