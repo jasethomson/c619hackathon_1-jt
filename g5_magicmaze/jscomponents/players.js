@@ -1,4 +1,3 @@
-
 class Player {
   constructor( color, positionX , positionY , player, BigY, BigX, LittleY, LittleX, ExitY, ExitX, Exity, Exitx) {
     this.player = $("<div>").addClass("player", player);
